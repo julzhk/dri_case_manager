@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <link href="css/font-awesome4.3.0.min.css" rel="stylesheet" type="text/css">
+        <link href="css/default.bootstrap.css" rel="stylesheet" type="text/css">
+    </head>
+
+    <body>
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="btn-toolbar" role="toolbar">
+                            <div class="btn-group">
+                                <a type="button" class="btn btn-primary" href="#">Admin</a>
+                                <a type="button" class="btn btn-default" href="social.html">Social</a>
+                                <a type="button" class="btn btn-default" href="medical.html">Medical</a>
+                                <a type="button" class="btn btn-default" href="status.html">Status</a>
+                            </div>
+                            <div class="btn-group">
+                                <a type="button" class="btn btn-default" href="clinical.html">Clinical Exam</a>
+                                <a type="button" class="btn btn-default" href="exam.html">Examination under Anesthesia</a>
+                            </div>
+                            <div class="btn-group">
+                                <a type="button" class="btn btn-default" href="treatment.html">Treatment</a>
+                            </div>
+                            <div class="btn-group">
+                                <a type="button" class="btn btn-default" href="discharge.html">Discharge</a>
+                                <a type="button" class="btn btn-default" href="followup.html">Follow-up</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1></h1>
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Admin</h3>
+                            </div>
+                            <div class="panel-body">
+                                <form role="form">
+                                    <div class="form-group">
+                                        <label class="control-label" for="patientNumber">Patient Number</label>
+                                        <input class="form-control" id="patientNumber" placeholder="Auto generated" type="text">
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <label class="control-label" for="patientName">Patient Name</label>
+                                        <input class="form-control" id="patientName" placeholder="Name" type="text">
+                                        <p class="help-block">Patient's full name : First name followed by Surname</p>
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <label class="control-label" for="contactInfo" contenteditable="true">Contact Information</label>
+                                        <input class="form-control" id="contactInfo" placeholder="Follow-up contact information" type="text">
+                                        <p class="help-block" contenteditable="true">For patient follow-up</p>
+                                    </div>
+                                    <!-- Textarea -->
+                                    <div class="control-group">
+                                        <label class="control-label" for="address">Address</label>
+                                        <div class="controls">
+                                            <textarea id="address" class="address" name="textarea">Address, including town & country</textarea>
+                                        </div>
+                                    </div>
+                                </form>
+                                <a class="btn btn-primary" contenteditable="true">Take Photo</a>
+                            </div>
+                            <button type="submit" class="btn btn-default consent">Consent Given</button>
+                            <button type="submit" class="btn btn-default consent-withheld">Consent Withheld</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="pager">
+                            <li>
+                                <!--<a href="#">←  Prev</a>-->
+                            </li>
+                            <li>
+                                <a href="social.html">Next  →</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <link href="css/font-awesome4.3.0.min.css" rel="stylesheet" type="text/css">
+        <link href="css/default.bootstrap.css" rel="stylesheet" type="text/css">
+    </head>
+    
+    <body>
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="btn-toolbar" role="toolbar">
+                            <div class="btn-group">
+                                <a type="button" class="btn btn-default" href="admin.html">Admin</a>
+                                <a type="button" class="btn btn-primary" href="social.html">Social</a>
+                                <a type="button" class="btn btn-default" href="medical.html">Medical</a>
+                                <a type="button" class="btn btn-default" href="status.html">Status</a>
+                            </div>
+                            <div class="btn-group">
+                                <a type="button" class="btn btn-default" href="clinical.html">Clinical Exam</a>
+                                <a type="button" class="btn btn-default" href="exam.html">Examination under Anesthesia</a>
+                            </div>
+                            <div class="btn-group">
+                                <a type="button" class="btn btn-default" href="treatment.html">Treatment</a>
+                            </div>
+                            <div class="btn-group">
+                                <a type="button" class="btn btn-default" href="discharge.html">Discharge</a>
+                                <a type="button" class="btn btn-default" href="followup.html">Follow-up</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1></h1>
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Social</h3>
+                            </div>
+                            <div class="panel-body">
+                                <form role="form">
+                                    <div class="form-group">
+                                        <label class="control-label" for="travelMode">How did you get here?</label>
+                                        <input class="form-control" id="travelMode" placeholder="What transport did you use?" type="text">
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <label class="control-label" for="travelDuration">How long did you take to get here?</label>
+                                        <input class="form-control" id="travelDuration" placeholder="Name" type="text">
+                                        <p class="help-block">Journey time in days / hours</p>
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <label class="control-label" for="travelCost">How much did it cost?
+                                            <br>
+                                        </label>
+                                        <input class="form-control" id="travelCost" placeholder="Cost and currency" type="text">
+                                        <p class="help-block">Journey cost</p>
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <label class="control-label" for="travelPayee">Who paid for your journey?</label>
+                                        <input class="form-control" id="travelPayee" placeholder="Travel paid by?" type="text">
+                                        <p class="help-block">For example: did they pay for the journey themselves? Did a family member
+                                            pay?</p>
+                                    </div>
+                                </form>
+                                <div class="col-md-12">
+                                    <div class="col-md-4">
+                                        <!-- Multiple Radios -->
+                                        <div class="control-group">
+                                            <label class="control-label" for="Marital-status-0">Marital Status</label>
+                                            <div class="controls">
+                                                <label class="radio" for="Marital-status-0">
+                                                    <input type="radio" name="Marital-status" id="Marital-status-0" value="Married" checked="checked">Unknown</label>
+                                                <label class="radio" for="Marital-status-0">
+                                                    <input type="radio" name="Marital-status" id="Marital-status-1" value="Married">Married</label>
+                                                <label class="radio" for="Marital-status-1">
+                                                    <input type="radio" name="Marital-status" id="Marital-status-2" value="Divorced">Divorced</label>
+                                                <label class="radio" for="Marital-status-2">
+                                                    <input type="radio" name="Marital-status" id="Marital-status-3" value="Widowed">Widowed</label>
+                                                <label class="radio" for="Marital-status-3">
+                                                    <input type="radio" name="Marital-status" id="Marital-status-4" value="Never Married">Never Married</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <!-- Multiple Radios -->
+                                        <div class="control-group">
+                                            <label class="control-label" for="education-status-0">Highest education level</label>
+                                            <div class="controls">
+                                                <label class="radio" for="education-status-0">
+                                                    <input type="radio" name="education-status" id="education-status-0" value="Unknown" checked="checked">Unknown</label>
+                                                <label class="radio" for="social-status-1">
+                                                    <input type="radio" name="education-status" id="education-status-1" value="None">No education completed</label>
+                                                <label class="radio" for="social-status-2">
+                                                    <input type="radio" name="education-status" id="education-status-2" value="Primary">Primary School</label>
+                                                <label class="radio" for="social-status-3">
+                                                    <input type="radio" name="education-status" id="education-status-3" value="Secondary School">Secondary School</label>
+                                                <label class="radio" for="education-status-4">
+                                                    <input type="radio" name="education-status" id="education-status-4" value="Higher Education">Higher Education</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <!-- Multiple Radios -->
+                                        <div class="control-group">
+                                            <label class="control-label" for="social-status-0">Social Status</label>
+                                            <div class="controls">
+                                                <label class="radio" for="social-status-0">
+                                                    <input type="radio" name="social-status" id="social-status-0" value="Unknown" checked="checked">Unknown</label>
+                                                <label class="radio" for="social-status-1">
+                                                    <input type="radio" name="social-status" id="social-status-1" value="Living with husband">Living with husband</label>
+                                                <label class="radio" for="social-status-2">
+                                                    <input type="radio" name="social-status" id="social-status-2" value="Living with family">Living with family</label>
+                                                <label class="radio" for="social-status-3">
+                                                    <input type="radio" name="social-status" id="social-status-3" value="Living alone">Living alone</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Textarea -->
+                                <div class="control-group">
+                                    <label class="control-label" for="occupation">What is your occupation?</label>
+                                    <div class="controls">
+                                        <textarea id="occupation" class="occupation" name="textarea">What is your job?</textarea>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="pager">
+                            <li>
+                                <a href="admin.html">←  Prev</a>
+                            </li>
+                            <li>
+                                <a href="medical.html">Next  →</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>
