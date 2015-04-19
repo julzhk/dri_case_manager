@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="io.cordova.drimanager" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>DriManager</name>
+    <description>
+        A simple Apache Cordova application that uses HTML forms saved to Couchdb locally; sync when online.
+    </description>
+    <author email="dri.20.learningfuture@spamgourmet.com" href="#">
+        Julian
+    </author>
+    <content src="admin.html" />
+    <access origin="*" />
+</widget>

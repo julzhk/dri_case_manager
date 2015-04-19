@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="js/jquery2.0.3.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap3.3.2.min.js"></script>
+    <link href="css/font-awesome4.3.0.min.css" rel="stylesheet" type="text/css">
+    <link href="css/default.bootstrap.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="btn-toolbar" role="toolbar">
+                    <div class="btn-group">
+                        <a type="button" class="btn btn-default" href="admin.html">Admin</a>
+                        <a type="button" class="btn btn-default" href="social.html">Social</a>
+                        <a type="button" class="btn btn-default" href="medical.html">Medical</a>
+                        <a type="button" class="btn btn-default" href="status.html">Status</a>
+                    </div>
+                    <div class="btn-group">
+                        <a type="button" class="btn btn-primary" href="clinical.html">Clinical Exam</a>
+                        <a type="button" class="btn btn-default" href="exam.html">Examination under Anesthesia</a>
+                    </div>
+                    <div class="btn-group">
+                        <a type="button" class="btn btn-default" href="treatment.html">Treatment</a>
+                    </div>
+                    <div class="btn-group">
+                        <a type="button" class="btn btn-default" href="discharge.html">Discharge</a>
+                        <a type="button" class="btn btn-default" href="followup.html">Follow-up</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1></h1>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Clinical Examination</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form role="form">
+                             <div class="form-group">
+                                <fieldset>
+                                    <div class="form-group">
+                                        <label class="control-label" for="height">Height (cm)?</label>
+                                        <input class="form-control" id="height" placeholder="Height in centimeters" type="text">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label" for="weight">Weight(kg)?</label>
+                                        <input class="form-control" id="weight" placeholder="weight in kilograms" type="text">
+                                    </div>
+                                </fieldset>
+
+                                 <!-- Textarea -->
+                                    <div class="control-group">
+                                        <label class="control-label" for="anomolies">Please specify any anomolies you encountered during general physical examination</label>
+                                        <div class="controls">
+                                            <textarea id="anomolies" class="anomolies" name="textarea">Any anomolies?</textarea>
+                                        </div>
+                                    </div>
+                                 <!-- Multiple Radios -->
+                                        <div class="control-group">
+                                            <label class="control-label" for="vvf-present-0">VVF Present at clinical examination?</label>
+                                            <div class="controls">
+                                                <label class="radio" for="vvf-present-0">
+                                                    <input type="radio" name="vvf-present" id="vvf-present-0" value="?-Unknown" checked="checked">Unknown</label>
+                                                <label class="radio" for="vvf-present-1">
+                                                    <input type="radio" name="vvf-present" id="vvf-present-1" value="1-yes">Yes</label>
+                                                <label class="radio" for="vvf-present-2">
+                                                    <input type="radio" name="vvf-present" id="vvf-present-2" value="2-No">No</label>
+                                            </div>
+                                        </div>
+                                 
+                                 
+                                        <div class="control-group">
+                                            <label class="control-label" for="dye-test-0">Dye test?</label>
+                                            <div class="controls">
+                                                <label class="radio" for="dye-test-0">
+                                                    <input type="radio" name="dye-test" id="dye-test-0" value="?-Unknown" checked="checked">Unknown</label>
+                                                <label class="radio" for="dye-test-1">
+                                                    <input type="radio" name="dye-test" id="dye-test-1" value="1-positive">Positive</label>
+                                                <label class="radio" for="dye-test-2">
+                                                    <input type="radio" name="dye-test" id="dye-test-2" value="2-negative">Negative</label>
+                                                <label class="radio" for="dye-test-3">
+                                                    <input type="radio" name="dye-test" id="dye-test-2" value="2-not-done">Not Done</label>
+                                            </div>
+                                        </div>                                 
+
+
+                                        <div class="control-group">
+                                            <label class="control-label" for="rvf-present-0">RVF Present at clinical examination?</label>
+                                            <div class="controls">
+                                                <label class="radio" for="rvf-present-0">
+                                                    <input type="radio" name="rvf-present" id="rvf-present-0" value="?-Unknown" checked="checked">Unknown</label>
+                                                <label class="radio" for="rvf-present-1">
+                                                    <input type="radio" name="rvf-present" id="rvf-present-1" value="1-yes">Yes</label>
+                                                <label class="radio" for="rvf-present-2">
+                                                    <input type="radio" name="rvf-present" id="rvf-present-2" value="2-No">No</label>
+                                            </div>
+                                        </div>
+                                                                  
+                                      <!-- Textarea -->
+                                        <div class="control-group">
+                                            <label class="control-label" for="provisional-description">How would you provisionally describe/classify the fistula?</label>
+                                            <div class="controls">
+                                                <textarea id="provisional-description" class="provisional-description" name="textarea">Fistula provisional description/classification </textarea>
+                                            </div>
+                                        </div>
+                                 
+                                 
+                                        <div class="control-group">
+                                            <label class="control-label" for="dermatitis-0">Is there dermatitis present?</label>
+                                            <div class="controls">
+                                                <label class="radio" for="dermatitis-0">
+                                                    <input type="radio" name="dermatitis" id="dermatitis-0" value="?-Unknown" checked="checked">Unknown</label>
+                                                <label class="radio" for="dermatitis-1">
+                                                    <input type="radio" name="dermatitis" id="dermatitis-1" value="1-none">None</label>
+                                                <label class="radio" for="dermatitis-2">
+                                                    <input type="radio" name="dermatitis" id="dermatitis-2" value="2-moderate">Moderate</label>
+                                                <label class="radio" for="dermatitis-3">
+                                                    <input type="radio" name="dermatitis" id="dermatitis-3" value="3-severe">Severe</label>
+                                            </div>
+                                        </div>
+                                     <div class="form-group">
+                                        <label class="control-label" for="haemoglobin">Haemoglobin(grams per deciliter)?</label>
+                                        <input class="form-control" id="haemoglobin" placeholder="Haemoglobin(g/dl)" type="text">
+                                    </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="pager">
+                    <li>
+                        <a href="status.html">← Prev</a>
+                    </li>
+                    <li>
+                        <a href="exam.html">Next →</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

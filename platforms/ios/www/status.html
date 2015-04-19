@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="js/jquery2.0.3.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap3.3.2.min.js"></script>
+    <link href="css/font-awesome4.3.0.min.css" rel="stylesheet" type="text/css">
+    <link href="css/default.bootstrap.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="btn-toolbar" role="toolbar">
+                    <div class="btn-group">
+                        <a type="button" class="btn btn-default" href="admin.html">Admin</a>
+                        <a type="button" class="btn btn-default" href="social.html">Social</a>
+                        <a type="button" class="btn btn-default" href="medical.html">Medical</a>
+                        <a type="button" class="btn btn-primary" href="status.html">Status</a>
+                    </div>
+                    <div class="btn-group">
+                        <a type="button" class="btn btn-default" href="clinical.html">Clinical Exam</a>
+                        <a type="button" class="btn btn-default" href="exam.html">Examination under Anesthesia</a>
+                    </div>
+                    <div class="btn-group">
+                        <a type="button" class="btn btn-default" href="treatment.html">Treatment</a>
+                    </div>
+                    <div class="btn-group">
+                        <a type="button" class="btn btn-default" href="discharge.html">Discharge</a>
+                        <a type="button" class="btn btn-default" href="followup.html">Follow-up</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1></h1>
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Present Status</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form role="form">
+                             <div class="form-group">
+                                <fieldset>
+                                    <div class="form-group">
+                                        <label class="control-label" for="recentPeriod">Date of most recent period?</label>
+                                        <input class="form-control" id="recentPeriod" placeholder="Date of most recent period? dd/mm/yy" type="text">
+                                    </div>
+                                </fieldset>
+                                 <!-- Multiple Radios -->
+                                        <div class="control-group">
+                                            <legend>Urinary incontinence score</legend>
+                                            <label class="control-label" for="urinary-incontinency-score-0">Choose the phrase that best describes patient</label>
+                                            <div class="controls">
+                                                <label class="radio" for="urinary-incontinency-score-0">
+                                                    <input type="radio" name="urinary-incontinency-score" id="urinary-incontinency-score-0" value="?-Unknown" checked="checked">Unknown</label>
+                                                <label class="radio" for="urinary-incontinency-score-1">
+                                                    <input type="radio" name="urinary-incontinency-score" id="urinary-incontinency-score-1" value="1-No urinary incontinence">No urinary incontinence</label>
+                                                <label class="radio" for="urinary-incontinency-score-2">
+                                                    <input type="radio" name="urinary-incontinency-score" id="urinary-incontinency-score-2" value="2-Patient leaks urine when coughing">Patient leaks urine when coughing, laughing, straining</label>
+                                                <label class="radio" for="urinary-incontinency-score-3">
+                                                    <input type="radio" name="urinary-incontinency-score" id="urinary-incontinency-score-3" value="3-walking">Patient leaks urine when walking</label>
+                                                <label class="radio" for="urinary-incontinency-score-4">
+                                                    <input type="radio" name="urinary-incontinency-score" id="urinary-incontinency-score-4" value="4-standing,sitting">Patient leaks urine when standing, sitting, or lying. Patient still able to void</label>
+                                                <label class="radio" for="urinary-incontinency-score-5">
+                                                    <input type="radio" name="urinary-incontinency-score" id="urinary-incontinency-score-5" value="5-any-moment">Patient leaks urine at any moment and is unable to void</label>
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <legend>Fecal incontinence score</legend>
+                                            <label class="control-label" for="fecal-incontinency-score-0">Choose the phrase that best describes patient</label>
+                                            <div class="controls">
+                                                <label class="radio" for="fecal-incontinency-score-0">
+                                                    <input type="radio" name="fecal-incontinency-score" id="fecal-incontinency-score-0" value="?-Unknown" checked="checked">Unknown</label>
+                                                <label class="radio" for="fecal-incontinency-score-1">
+                                                    <input type="radio" name="fecal-incontinency-score" id="fecal-incontinency-score-1" value="1-No fecal incontinence">Patient controls stool completely</label>
+                                                <label class="radio" for="fecal-incontinency-score-2">
+                                                    <input type="radio" name="fecal-incontinency-score" id="fecal-incontinency-score-2" value="2-Patient cannot control flatus">Patient cannot control flatus</label>
+                                                <label class="radio" for="fecal-incontinency-score-3">
+                                                    <input type="radio" name="fecal-incontinency-score" id="fecal-incontinency-score-3" value="3-and-liquid-stool">Patient cannot control flatus, liquid stool</label>
+                                                <label class="radio" for="fecal-incontinency-score-4">
+                                                    <input type="radio" name="fecal-incontinency-score" id="fecal-incontinency-score-4" value="4-and-solid-stool">Patient cannot control flatus, liquid stool, or solid stool</label>
+                                                
+                                            </div>
+                                        </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="pager">
+                    <li>
+                        <a href="medical.html">← Prev</a>
+                    </li>
+                    <li>
+                        <a href="clinical.html">Next →</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
