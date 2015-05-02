@@ -7,13 +7,68 @@
     <script src="../js/underscore-min.js"></script>
     <script src="../js/jquery.js"></script>
     <script type="application/javascript">
-        console.log('start pouch db test');
+        function write_nav_to_ui(count){
+            console.log('count' + count);
+            $('.nav').append(count);
+        }
+        function write_to_ui(rows){
+            console.log('write started');
+            _.each(rows,function(row){
+                $('.data').append("<tr>");
+                $('.data').append("<td>"+ row.id+"</td>");
+                $('.data').append("<td>"+ row.doc.title+"</td>");
+                $('.data').append("</tr>");
+                console.log(row);
+            });
+        }
+        function showTodos(limit,skip) {
+            db.allDocs({
+                include_docs: true,
+                descending: true,
+                limit:limit,
+                skip:skip
+            }, function(err, doc) {
+                console.log(doc);
+                write_to_ui(doc.rows);
+                write_nav_to_ui(doc.total_rows);
+            });
+        }
+        console.log('line 28 : start pouch db test');
+        $.urlParam = function(name){
+            //   extract parameters from url:
+            //   http://stackoverflow.com/questions/19491336/get-url-parameter-jquery
+            var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+            if (results==null){
+               return null;
+            }
+            else{
+               return results[1] || 0;
+            }
+        }
         //    sync to : https://cloudant.com/ ?
         //    var db = new PouchDB('http://localhost:5984/my_database');
         var db = new PouchDB('my_database');
+        var remoteCouch = 'http://user:pass@dritest.iriscouch.com/todos';
+        function sync() {
+          syncDom.setAttribute('data-sync-state', 'syncing');
+          var opts = {live: true};
+          db.replicate.to(remoteCouch, opts, syncError);
+          db.replicate.from(remoteCouch, opts, syncError);
+        }
         $( document ).ready(function() {
             // Handler for .ready() called.
             console.log('started jq');
+            var page= $.urlParam('p');
+            page = parseInt(page, 10);
+            if (isNaN(page)){
+                page = 0;
+            };
+            console.log(page);
+            var limit = 5;
+            var skip = page * limit; // == 5 for the first page, 10 for the second ...
+            console.log('page = '+ page);
+            console.log('skip = '+ skip);
+
             //   FYI  throws an 'expected' error about 404.. normal..just detecting blob URL support.
             var todo = {
                 _id: new Date().toISOString(),
@@ -31,23 +86,10 @@
                     console.log('Successfully posted a todo!');
                 }
             });
+            showTodos(limit, skip);
         });
-        function write_to_ui(rows){
-            console.log('write started');
-            _.each(rows,function(row){
-                $('.data').append("<tr>");
-                $('.data').append("<td>"+ row.id+"</td>");
-                $('.data').append("<td>"+ row.doc.title+"</td>");
-                $('.data').append("</tr>");
-                console.log(row);
-            });
-        }
-        function showTodos() {
-            db.allDocs({include_docs: true, descending: true}, function(err, doc) {
-                write_to_ui(doc.rows);
-            });
-        }
-        showTodos();
+
+
     </script>
 
 </head>
@@ -61,6 +103,6 @@ see http://pouchdb.com/getting-started.html
     <tbody class="data">
     </tbody>
 </table>
-
+<span class="nav">out of </span> records
 </body>
 </html>
