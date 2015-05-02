@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/pouchdb-3.3.0.min.js"></script>
+    <script src="../js/underscore-min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script type="application/javascript">
+        console.log('start pouch db test');
+        //    sync to : https://cloudant.com/ ?
+        //    var db = new PouchDB('http://localhost:5984/my_database');
+        var db = new PouchDB('my_database');
+        $( document ).ready(function() {
+            // Handler for .ready() called.
+            console.log('started jq');
+            //   FYI  throws an 'expected' error about 404.. normal..just detecting blob URL support.
+            var todo = {
+                _id: new Date().toISOString(),
+                title: _.sample(
+                        [ '1 let it be',
+                            '2 sgt peppers',
+                            '3 white album',
+                            '4 abbey rd',
+                            '5 magical mystery tour',
+                            '6 best of the beatles']),
+                completed: false
+            };
+            db.put(todo, function callback(err, result) {
+                if (!err) {
+                    console.log('Successfully posted a todo!');
+                }
+            });
+        });
+        function write_to_ui(rows){
+            console.log('write started');
+            _.each(rows,function(row){
+                $('.data').append("<tr>");
+                $('.data').append("<td>"+ row.id+"</td>");
+                $('.data').append("<td>"+ row.doc.title+"</td>");
+                $('.data').append("</tr>");
+                console.log(row);
+            });
+        }
+        function showTodos() {
+            db.allDocs({include_docs: true, descending: true}, function(err, doc) {
+                write_to_ui(doc.rows);
+            });
+        }
+        showTodos();
+    </script>
+
+</head>
+<body>
+see http://pouchdb.com/getting-started.html
+<table>
+    <thead>
+    <th>date</th>
+    <th>album</th>
+    </thead>
+    <tbody class="data">
+    </tbody>
+</table>
+
+</body>
+</html>
