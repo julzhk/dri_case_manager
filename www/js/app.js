@@ -11,7 +11,8 @@ function write_nav_to_ui(limit,skip, page, count){
 
 function write_to_ui(rows){
     _.each(rows,function(row){
-        $('.data').append("<tr>");
+        $('.data').append("<tr class='table-striped'>");
+        $('.data').append("<td>"+ row.id+"</td>");
         $('.data').append("<td>"+ row.id+"</td>");
         $('.data').append("<td>"+ row.doc.title+"</td>");
         $('.data').append("</tr>");

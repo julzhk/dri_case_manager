@@ -7,6 +7,6 @@
     <author email="dri.20.learningfuture@spamgourmet.com" href="#">
         Julian
     </author>
-    <content src="admin.html" />
+    <content src="index.html" />
     <access origin="*" />
 </widget>
