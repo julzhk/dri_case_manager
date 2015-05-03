@@ -1,7 +1,7 @@
 //    sync to : https://cloudant.com/ ?
 //    var db = new PouchDB('http://localhost:5984/my_database');
 var db = new PouchDB('http://localhost:5984/my_database');
-
+var syncDom = document.getElementById('sync-wrapper');
 
 function write_nav_to_ui(limit,skip, page, count){
     $('.nav').append('Records '+ (skip) + ' to '+ (skip + limit) + ' of '+ count + '<br>');
@@ -17,9 +17,12 @@ function write_nav_to_ui(limit,skip, page, count){
 function write_to_ui(rows){
     _.each(rows,function(row){
         $('.data').append("<tr class='table-striped'>");
+        //date
         $('.data').append("<td>"+ row.id+"</td>");
+        // number
         $('.data').append("<td>"+ row.id+"</td>");
-        $('.data').append("<td>"+ row.doc.title+"</td>");
+        // name
+        $('.data').append("<td>"+ row.doc.patientName+"</td>");
         $('.data').append("</tr>");
         console.log(row);
     });
@@ -96,17 +99,22 @@ function add_new_record(event){
 
 function save_on_page_change(event){
     console.log('93 save_on_page_change');
-    var data = $( "form" ).serialize();
+    var data = $( "form" ).serializeArray();
+    var data_dict = {};
+        _.each(data,function(ele){
+        data_dict[ele.name] = ele.value
+    })
     console.log(data);
+    console.log(data_dict);
     var destination_url = event.currentTarget.href;
     var id = Cookies.get('id');
     sync();
+
     db.get(id).then(function(doc) {
-        return db.put({
-            _id: id,
-            _rev: doc._rev,
-            title: "abba"
-        });
+        data_dict._id=id;
+        data_dict._rev=doc._rev;
+        console.log(data_dict);
+        return db.put(data_dict);
     }).then(function(response) {
       // handle response
     }).catch(function (err) {
