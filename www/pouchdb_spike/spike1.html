@@ -7,9 +7,16 @@
     <script src="../js/underscore-min.js"></script>
     <script src="../js/jquery.js"></script>
     <script type="application/javascript">
-        function write_nav_to_ui(count){
-            console.log('count' + count);
-            $('.nav').append(count);
+        function write_nav_to_ui(limit,skip, page, count){
+            $('.nav').append('Records '+ (skip) + ' to '+ (skip + limit) + ' of '+ count + '<br>');
+            if(page>1){
+                $('.nav').append('<a href="?p='+ (page-1) + '">Newer</a>');
+            }
+            $('.nav').append(' | ');
+            if((page+1)*limit<count){
+                $('.nav').append('<a href="?p='+ (page+1) + '">Older</a>');
+            }
+
         }
         function write_to_ui(rows){
             console.log('write started');
@@ -21,7 +28,7 @@
                 console.log(row);
             });
         }
-        function showTodos(limit,skip) {
+        function showrecords(limit,skip, page) {
             db.allDocs({
                 include_docs: true,
                 descending: true,
@@ -30,7 +37,7 @@
             }, function(err, doc) {
                 console.log(doc);
                 write_to_ui(doc.rows);
-                write_nav_to_ui(doc.total_rows);
+                write_nav_to_ui(limit,skip, page, doc.total_rows);
             });
         }
         console.log('line 28 : start pouch db test');
@@ -64,13 +71,11 @@
                 page = 0;
             };
             console.log(page);
-            var limit = 5;
-            var skip = page * limit; // == 5 for the first page, 10 for the second ...
-            console.log('page = '+ page);
-            console.log('skip = '+ skip);
+            var limit = 10;
+            var skip = page * limit; // == 'limit' for the first page, 'limitx2' for the second ...
 
             //   FYI  throws an 'expected' error about 404.. normal..just detecting blob URL support.
-            var todo = {
+            var new_record = {
                 _id: new Date().toISOString(),
                 title: _.sample(
                         [ '1 let it be',
@@ -81,12 +86,12 @@
                             '6 best of the beatles']),
                 completed: false
             };
-            db.put(todo, function callback(err, result) {
+            db.put(new_record, function callback(err, result) {
                 if (!err) {
-                    console.log('Successfully posted a todo!');
+                    console.log('Successfully posted a new_record!');
                 }
             });
-            showTodos(limit, skip);
+            showrecords(limit, skip, page);
         });
 
 
@@ -103,6 +108,6 @@ see http://pouchdb.com/getting-started.html
     <tbody class="data">
     </tbody>
 </table>
-<span class="nav">out of </span> records
+<span class="nav"></span>
 </body>
 </html>
