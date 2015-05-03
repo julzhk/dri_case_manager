@@ -6,52 +6,8 @@
     <script src="../js/pouchdb-3.3.0.min.js"></script>
     <script src="../js/underscore-min.js"></script>
     <script src="../js/jquery.js"></script>
+    <script src="../js/app.js"></script>
     <script type="application/javascript">
-        function write_nav_to_ui(limit,skip, page, count){
-            $('.nav').append('Records '+ (skip) + ' to '+ (skip + limit) + ' of '+ count + '<br>');
-            if(page>1){
-                $('.nav').append('<a href="?p='+ (page-1) + '">Newer</a>');
-            }
-            $('.nav').append(' | ');
-            if((page+1)*limit<count){
-                $('.nav').append('<a href="?p='+ (page+1) + '">Older</a>');
-            }
-
-        }
-        function write_to_ui(rows){
-            console.log('write started');
-            _.each(rows,function(row){
-                $('.data').append("<tr>");
-                $('.data').append("<td>"+ row.id+"</td>");
-                $('.data').append("<td>"+ row.doc.title+"</td>");
-                $('.data').append("</tr>");
-                console.log(row);
-            });
-        }
-        function showrecords(limit,skip, page) {
-            db.allDocs({
-                include_docs: true,
-                descending: true,
-                limit:limit,
-                skip:skip
-            }, function(err, doc) {
-                console.log(doc);
-                write_to_ui(doc.rows);
-                write_nav_to_ui(limit,skip, page, doc.total_rows);
-            });
-        }
-        console.log('line 28 : start pouch db test');
-        $.urlParam = function(name){
-            //   extract parameters from url:
-            //   http://stackoverflow.com/questions/19491336/get-url-parameter-jquery
-            var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-            if (results==null){
-               return null;
-            }
-            else{
-               return results[1] || 0;
-            }
-        }
         //    sync to : https://cloudant.com/ ?
         //    var db = new PouchDB('http://localhost:5984/my_database');
         var db = new PouchDB('my_database');
@@ -68,9 +24,8 @@
             var page= $.urlParam('p');
             page = parseInt(page, 10);
             if (isNaN(page)){
-                page = 0;
+                page = 1;
             };
-            console.log(page);
             var limit = 10;
             var skip = page * limit; // == 'limit' for the first page, 'limitx2' for the second ...
 
@@ -93,10 +48,7 @@
             });
             showrecords(limit, skip, page);
         });
-
-
     </script>
-
 </head>
 <body>
 see http://pouchdb.com/getting-started.html
