@@ -28,9 +28,12 @@ function showrecords(limit,skip, page) {
         limit:limit,
         skip:skip
     }, function(err, doc) {
-        console.log(doc);
-        write_to_ui(doc.rows);
-        write_nav_to_ui(limit,skip, page, doc.total_rows);
+        if (typeof doc === "undefined") {
+            console.log('no records')
+        } else {
+            write_to_ui(doc.rows);
+            write_nav_to_ui(limit,skip, page, doc.total_rows);
+        }
     });
 }
 
@@ -45,4 +48,9 @@ $.urlParam = function(name){
     else{
        return results[1] || 0;
     }
+}
+
+// There was some form or error syncing
+function syncError() {
+    syncDom.setAttribute('data-sync-state', 'error');
 }

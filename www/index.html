@@ -19,15 +19,18 @@
     <script type="application/javascript">
         //    sync to : https://cloudant.com/ ?
         //    var db = new PouchDB('http://localhost:5984/my_database');
-        var db = new PouchDB('my_database');
-        var remoteCouch = 'http://user:pass@dritest.iriscouch.com/todos';
+        var db = new PouchDB('http://localhost:5984/my_database');
+        var syncDom = document.getElementById('sync-wrapper');
+//        var remoteCouch = 'http://user:pass@dritest.iriscouch.com/todos';
+        //    var db = new PouchDB('http://localhost:5984/my_database');
         function sync() {
-            syncDom.setAttribute('data-sync-state', 'syncing');
+//            syncDom.setAttribute('data-sync-state', 'syncing');
             var opts = {live: true};
-            db.replicate.to(remoteCouch, opts, syncError);
-            db.replicate.from(remoteCouch, opts, syncError);
+            db.replicate.to(db, opts, syncError);
+            db.replicate.from(db, opts, syncError);
         }
         $( document ).ready(function() {
+            sync();
             // Handler for .ready() called.
             console.log('started jq');
             var page= $.urlParam('p');
@@ -56,6 +59,7 @@
                 }
             });
             showrecords(limit, skip, page);
+            sync()
         })
     </script>
 </head>
@@ -82,6 +86,9 @@
                         </table>
                         <span class="nav"></span>
                         <a href="index.html">add record</a>
+                    </div>
+                    <div id="sync-wrapper" >
+                        ss
                     </div>
                 </div>
             </div>
