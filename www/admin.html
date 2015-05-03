@@ -15,6 +15,7 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <script type="application/javascript">
             $(document).ready(function(event) {
+                $('a').bind("click", event, save_on_page_change);
                 console.log('begin jq');
                 var id = Cookies.get('id');
                 console.log(id);
@@ -70,24 +71,24 @@
                                     </div>
                                 <form role="form">
                                     <div class="form-group">
-                                        <label class="control-label" for="patientNumber">Patient Number</label>
-                                        <input class="form-control" id="patientNumber" placeholder="Auto generated" type="text">
+                                        <label class="control-label" for="patientNumber" name="patient_number">Patient Number</label>
+                                        <input class="form-control" id="patientNumber" placeholder="Auto generated" type="text" readonly>
                                     </div>
                                     <div class="form-group has-feedback">
                                         <label class="control-label" for="patientName">Patient Name</label>
-                                        <input class="form-control" id="patientName" placeholder="Name" type="text">
+                                        <input class="form-control" id="patientName" placeholder="Name" type="text" name="patientName">
                                         <p class="help-block">Patient's full name : First name followed by Surname</p>
                                     </div>
                                     <div class="form-group has-feedback">
                                         <label class="control-label" for="contactInfo" contenteditable="true">Contact Information</label>
-                                        <input class="form-control" id="contactInfo" placeholder="Follow-up contact information" type="text">
+                                        <input class="form-control" id="contactInfo" name="contactInfo" placeholder="Follow-up contact information" type="text">
                                         <p class="help-block" contenteditable="true">For patient follow-up</p>
                                     </div>
                                     <!-- Textarea -->
                                     <div class="control-group">
                                         <label class="control-label" for="address">Address</label>
                                         <div class="controls">
-                                            <textarea id="address" class="address" name="textarea">Address, including town & country</textarea>
+                                            <textarea id="address" class="address" name="address">Address, including town & country</textarea>
                                         </div>
                                     </div>
                                 </form>

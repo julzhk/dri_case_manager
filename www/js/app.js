@@ -1,3 +1,8 @@
+//    sync to : https://cloudant.com/ ?
+//    var db = new PouchDB('http://localhost:5984/my_database');
+var db = new PouchDB('http://localhost:5984/my_database');
+
+
 function write_nav_to_ui(limit,skip, page, count){
     $('.nav').append('Records '+ (skip) + ' to '+ (skip + limit) + ' of '+ count + '<br>');
     if(page>1){
@@ -86,4 +91,29 @@ function add_new_record(event){
     Cookies.set('id', id);
     window.location.href = "admin.html";
     event.preventDefault();
+}
+
+
+function save_on_page_change(event){
+    console.log('93 save_on_page_change');
+    var data = $( "form" ).serialize();
+    console.log(data);
+    var destination_url = event.currentTarget.href;
+    var id = Cookies.get('id');
+    sync();
+    db.get(id).then(function(doc) {
+        return db.put({
+            _id: id,
+            _rev: doc._rev,
+            title: "abba"
+        });
+    }).then(function(response) {
+      // handle response
+    }).catch(function (err) {
+      console.log(err);
+    });
+
+    window.location.href = destination_url;
+    event.preventDefault();
+
 }

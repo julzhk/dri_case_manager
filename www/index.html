@@ -18,16 +18,13 @@
     <script src="js/underscore-min.js"></script>
     <script src="js/app.js"></script>
     <script type="application/javascript">
-        //    sync to : https://cloudant.com/ ?
-        //    var db = new PouchDB('http://localhost:5984/my_database');
-        var db = new PouchDB('http://localhost:5984/my_database');
+
         var syncDom = document.getElementById('sync-wrapper');
 //        var remoteCouch = 'http://user:pass@dritest.iriscouch.com/todos';
         //    var db = new PouchDB('http://localhost:5984/my_database');
         $( document ).ready(function(event) {
             $('.add').bind("click", event, add_new_record);
             sync();
-            // Handler for .ready() called.
             console.log('started jq');
             console.log(Cookies.get('id'));
             var page= $.urlParam('p');
