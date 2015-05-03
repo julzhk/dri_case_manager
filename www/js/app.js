@@ -54,3 +54,33 @@ $.urlParam = function(name){
 function syncError() {
     syncDom.setAttribute('data-sync-state', 'error');
 }
+
+function sync() {
+//            syncDom.setAttribute('data-sync-state', 'syncing');
+    var opts = {live: true};
+    db.replicate.to(db, opts, syncError);
+    db.replicate.from(db, opts, syncError);
+}
+
+function add_new_record(event){
+    //   FYI  throws an 'expected' error about 404..
+    // normal..just detecting blob URL support.
+    var new_record = {
+        _id: new Date().toISOString(),
+        title: _.sample(
+                [ '1 let it be',
+                    '2 sgt peppers',
+                    '3 white album',
+                    '4 abbey rd',
+                    '5 magical mystery tour',
+                    '6 best of the beatles']),
+        completed: false
+    };
+    db.put(new_record, function callback(err, result) {
+        if (!err) {
+            console.log('Successfully posted a new_record!');
+        }
+    });
+        sync();
+        event.preventDefault();
+}

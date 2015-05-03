@@ -23,13 +23,9 @@
         var syncDom = document.getElementById('sync-wrapper');
 //        var remoteCouch = 'http://user:pass@dritest.iriscouch.com/todos';
         //    var db = new PouchDB('http://localhost:5984/my_database');
-        function sync() {
-//            syncDom.setAttribute('data-sync-state', 'syncing');
-            var opts = {live: true};
-            db.replicate.to(db, opts, syncError);
-            db.replicate.from(db, opts, syncError);
-        }
-        $( document ).ready(function() {
+        $( document ).ready(function(event) {
+            $('.add').bind("click", event, add_new_record);
+
             sync();
             // Handler for .ready() called.
             console.log('started jq');
@@ -40,26 +36,7 @@
             };
             var limit = 5;
             var skip = page * limit; // == 'limit' for the first page, 'limitx2' for the second ...
-
-            //   FYI  throws an 'expected' error about 404.. normal..just detecting blob URL support.
-            var new_record = {
-                _id: new Date().toISOString(),
-                title: _.sample(
-                        [ '1 let it be',
-                            '2 sgt peppers',
-                            '3 white album',
-                            '4 abbey rd',
-                            '5 magical mystery tour',
-                            '6 best of the beatles']),
-                completed: false
-            };
-            db.put(new_record, function callback(err, result) {
-                if (!err) {
-                    console.log('Successfully posted a new_record!');
-                }
-            });
             showrecords(limit, skip, page);
-            sync()
         })
     </script>
 </head>
@@ -85,17 +62,15 @@
                             </tbody>
                         </table>
                         <span class="nav"></span>
-                        <a href="index.html">add record</a>
+                        <a href="index.html" class="add">add record</a>
                     </div>
-                    <div id="sync-wrapper" >
-                        ss
+                    <div id="sync-wrapper">
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-see http://pouchdb.com/getting-started.html
 <script type="text/javascript" src="js/pouchdb-3.3.0.min.js"></script>
 </body>
 </html>
