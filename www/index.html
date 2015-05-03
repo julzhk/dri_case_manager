@@ -14,6 +14,7 @@
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
     <script src="js/pouchdb-3.3.0.min.js"></script>
     <script src="js/jquery.js"></script>
+    <script src="js/js.cookie.js"></script>
     <script src="js/underscore-min.js"></script>
     <script src="js/app.js"></script>
     <script type="application/javascript">
@@ -25,10 +26,10 @@
         //    var db = new PouchDB('http://localhost:5984/my_database');
         $( document ).ready(function(event) {
             $('.add').bind("click", event, add_new_record);
-
             sync();
             // Handler for .ready() called.
             console.log('started jq');
+            console.log(Cookies.get('id'));
             var page= $.urlParam('p');
             page = parseInt(page, 10);
             if (isNaN(page)){
@@ -62,7 +63,7 @@
                             </tbody>
                         </table>
                         <span class="nav"></span>
-                        <a href="index.html" class="add">add record</a>
+                        <a href="#" class="add">add record</a>
                     </div>
                     <div id="sync-wrapper">
                     </div>

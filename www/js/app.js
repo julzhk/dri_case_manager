@@ -65,8 +65,9 @@ function sync() {
 function add_new_record(event){
     //   FYI  throws an 'expected' error about 404..
     // normal..just detecting blob URL support.
+    var id = new Date().toISOString();
     var new_record = {
-        _id: new Date().toISOString(),
+        _id: id,
         title: _.sample(
                 [ '1 let it be',
                     '2 sgt peppers',
@@ -81,6 +82,8 @@ function add_new_record(event){
             console.log('Successfully posted a new_record!');
         }
     });
-        sync();
-        event.preventDefault();
+    sync();
+    Cookies.set('id', id);
+    window.location.href = "admin.html";
+    event.preventDefault();
 }
