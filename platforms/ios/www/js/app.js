@@ -168,3 +168,11 @@ function save_on_page_change(event){
     event.preventDefault();
 
 }
+
+
+/* IONIC */
+angular.module('dricase', ['ionic'])
+    .controller('SideController', function($scope, $ionicSideMenuDelegate){
+        $scope.toggleLeft = function() {
+            $ionicSideMenuDelegate.toggleLeft();};
+});

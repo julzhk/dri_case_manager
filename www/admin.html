@@ -2,6 +2,11 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+
+        <!-- ionic/angularjs js -->
+        <script src="lib/ionic/js/ionic.bundle.js"></script>
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/bootstrap.js"></script>
         <script src="js/pouchdb-3.3.0.min.js"></script>
@@ -20,100 +25,113 @@
             });
         </script>
     </head>
-    <body>
-        <div class="section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="btn-toolbar" role="toolbar">
-                            <div class="btn-group">
-                                <a type="button" class="btn btn-primary" href="#">Admin</a>
-                                <a type="button" class="btn btn-default" href="social.html">Social</a>
-                                <a type="button" class="btn btn-default" href="medical.html">Medical</a>
-                                <a type="button" class="btn btn-default" href="status.html">Status</a>
-                            </div>
-                            <div class="btn-group">
-                                <a type="button" class="btn btn-default" href="clinical.html">Clinical Exam</a>
-                                <a type="button" class="btn btn-default" href="exam.html">Examination under Anesthesia</a>
-                            </div>
-                            <div class="btn-group">
-                                <a type="button" class="btn btn-default" href="treatment.html">Treatment</a>
-                            </div>
-                            <div class="btn-group">
-                                <a type="button" class="btn btn-default" href="discharge.html">Discharge</a>
-                                <a type="button" class="btn btn-default" href="followup.html">Follow-up</a>
-                            </div>
+    <body ng-app="dricase">
+    <div ng-controller="SideController">
+      <ion-nav-view>
+
+      </ion-nav-view>
+    </div>
+    <ion-side-menus>
+        <!-- Main menu -->
+        <ion-side-menu-content>
+            <ion-header-bar class="bar-dark">
+                <button class="button button-icon icon ion-navicon"></button>
+                <h1 class="title">Admin</h1>
+            </ion-header-bar>
+            <ion-content class="has-header">
+                <!-- Setup -->
+                <div class="card">
+                    <div class="item item-text-wrap app">
+                        <h1>Apache Cordova</h1>
+
+                        <div id="deviceready" class="blink">
+                            <p class="event listening">Connecting to Device</p>
+
+                            <p class="event received">Device is Ready</p>
                         </div>
+                        <div id="pouchdb-display"></div>
+                </div>
+                <!-- End setup -->
+                <!-- Begin form -->
+                <div class="card">
+                    <div class="item item-input item-stacked-label">
+                        <label for="patientNumber" name="patient_number">Patient Number</label>
+                        <input id="patientNumber" placeholder="Auto generated" type="text" readonly>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1></h1>
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Admin</h3>
+
+                <div class="card">
+                    <div class="item item-input item-stacked-label has-feedback">
+                        <label for="patientName">Patient Name</label>
+                        <input id="patientName" placeholder="Name" type="text" name="patientName">
+
+                        <p class="help-block">Patient's full name :
+                            First name followed by Surname</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="item item-input item-stacked-label has-feedback">
+                        <label for="contactInfo" contenteditable="true">Contact Information</label>
+                        <input id="contactInfo" name="contactInfo" placeholder="Follow-up contact information" type="text">
+
+                        <p class="help-block" contenteditable="true">
+                            For patient follow-up</p>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="item item-input item-stacked-label">
+                        <label for="address">Address</label>
+                        <textarea id="address" class="address" name="address">Address, including town & country</textarea>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="item item-input">
+                        <button class="button button-full button-stable"><i class="icon ion-camera"></i> Take picture</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="item item-toggle">
+                        Consent given?
+                        <label class="toggle">
+                            <input type="checkbox">
+                            <div class="track">
+                                <div class="handle"></div>
                             </div>
-                            <div class="panel-body">
-                                <div class="app">
-                                    <h1>Apache Cordova</h1>
-                                    <div id="deviceready" class="blink">
-                                        <p class="event listening">Connecting to Device</p>
-                                        <p class="event received">Device is Ready</p>
-                                    </div>
-                                    <div id="pouchdb-display">
-                                    </div>
-                                <form role="form">
-                                    <div class="form-group">
-                                        <label class="control-label" for="patientNumber" name="patient_number">Patient Number</label>
-                                        <input class="form-control" id="patientNumber" placeholder="Auto generated" type="text" readonly>
-                                    </div>
-                                    <div class="form-group has-feedback">
-                                        <label class="control-label" for="patientName">Patient Name</label>
-                                        <input class="form-control" id="patientName" placeholder="Name" type="text" name="patientName">
-                                        <p class="help-block">Patient's full name : First name followed by Surname</p>
-                                    </div>
-                                    <div class="form-group has-feedback">
-                                        <label class="control-label" for="contactInfo" contenteditable="true">Contact Information</label>
-                                        <input class="form-control" id="contactInfo" name="contactInfo" placeholder="Follow-up contact information" type="text">
-                                        <p class="help-block" contenteditable="true">For patient follow-up</p>
-                                    </div>
-                                    <!-- Textarea -->
-                                    <div class="control-group">
-                                        <label class="control-label" for="address">Address</label>
-                                        <div class="controls">
-                                            <textarea id="address" class="address" name="address">Address, including town & country</textarea>
-                                        </div>
-                                    </div>
-                                </form>
-                                <a class="btn btn-primary" contenteditable="true">Take Photo</a>
-                            </div>
-                            <button type="submit" class="btn btn-default consent">Consent Given</button>
-                            <button type="submit" class="btn btn-default consent-withheld">Consent Withheld</button>
-                        </div>
+                        </label>
                     </div>
                 </div>
             </div>
+            </ion-content>
+
+        <div class="tabs">
+            <a class="tab-item" href="index.html">← Prev</a>
+            <a class="tab-item" href="social.html">Next →</a>
         </div>
-        <div class="section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <ul class="pager">
-                            <li>
-                                <a href="index.html">←  Prev</a>
-                            </li>
-                            <li>
-                                <a href="social.html">Next  →</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
+    </ion-side-menu-content>
+
+    <!-- Side menu -->
+    <ion-side-menu side="left">
+            <ul class="list">
+                <li class="item"><a href="#">Admin</a></li>
+                <li class="item"><a href="social.html">Social</a></li>
+                <li class="item"><a href="medical.html">Medical</a></li>
+                <li class="item"><a href="status.html">Status</a></li>
+                <li class="item item-divider"></li>
+                <li class="item"><a href="clinical.html">Clinical Exam</a></li>
+                <li class="item"><a href="exam.html">Examination under Anesthesia</a></li>
+                <li class="item item-divider"></li>
+                <li class="item"><a href="treatment.html">Treatment</a></li>
+                <li class="item item-divider"></li>
+                <li class="item"><a href="discharge.html">Discharge</a></li>
+                <li class="item"><a href="followup.html">Follow-up</a></li>
+            </ul>
+        </ion-side-menu>
+    </ion-side-menus>
     </body>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/pouchdb-3.3.0.min.js"></script>
