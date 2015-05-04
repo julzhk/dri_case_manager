@@ -1,176 +1,148 @@
 <!DOCTYPE html>
 <html>
-    
-    <head>
-        <meta charset="utf-8">
-        <script type="text/javascript" src="js/jquery.js"></script>
-        <script type="text/javascript" src="js/bootstrap.js"></script>
-        <script src="js/pouchdb-3.3.0.min.js"></script>
-        <script src="js/jquery.js"></script>
-        <script src="js/js.cookie.js"></script>
-        <script src="js/underscore-min.js"></script>
-        <script src="js/app.js"></script>
-        <link href="css/font-awesome4.3.0.min.css" rel="stylesheet" type="text/css">
-        <link href="css/default.bootstrap.css" rel="stylesheet" type="text/css">
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <script type="application/javascript">
-            $(document).ready(function(event) {
-                $('a').bind("click", event, save_on_page_change);
-                console.log('begin jq');
-                var id = Cookies.get('id');
-                $('#patientNumber').val(id);
-            });
-        </script>
-    </head>
-    
-    <body>
-        <div class="section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="btn-toolbar" role="toolbar">
-                            <div class="btn-group">
-                                <a type="button" class="btn btn-default" href="admin.html">Admin</a>
-                                <a type="button" class="btn btn-primary" href="social.html">Social</a>
-                                <a type="button" class="btn btn-default" href="medical.html">Medical</a>
-                                <a type="button" class="btn btn-default" href="status.html">Status</a>
-                            </div>
-                            <div class="btn-group">
-                                <a type="button" class="btn btn-default" href="clinical.html">Clinical Exam</a>
-                                <a type="button" class="btn btn-default" href="exam.html">Examination under Anesthesia</a>
-                            </div>
-                            <div class="btn-group">
-                                <a type="button" class="btn btn-default" href="treatment.html">Treatment</a>
-                            </div>
-                            <div class="btn-group">
-                                <a type="button" class="btn btn-default" href="discharge.html">Discharge</a>
-                                <a type="button" class="btn btn-default" href="followup.html">Follow-up</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1></h1>
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Social</h3>
-                            </div>
-                            <div class="panel-body">
-                                <form role="form">
-                                    <input class="form-control hidden" name="formName"  id="formName" type="text" value="social" readonly>
-                                    <input class="form-control hidden" id="patientNumber" type="text" readonly>
-                                    <div class="form-group">
-                                        <label class="control-label" for="travelMode">How did you get here?</label>
-                                        <input class="form-control" id="travelMode" name="travelMode" placeholder="What transport did you use?" type="text">
-                                    </div>
-                                    <div class="form-group has-feedback">
-                                        <label class="control-label" for="travelDuration">How long did you take to get here?</label>
-                                        <input class="form-control" id="travelDuration" name="travelDuration" placeholder="Name" type="text">
-                                        <p class="help-block">Journey time in days / hours</p>
-                                    </div>
-                                    <div class="form-group has-feedback">
-                                        <label class="control-label" for="travelCost">How much did it cost?
-                                            <br>
-                                        </label>
-                                        <input class="form-control" id="travelCost" name="travelCost" placeholder="Cost and currency" type="text">
-                                        <p class="help-block">Journey cost</p>
-                                    </div>
-                                    <div class="form-group has-feedback">
-                                        <label class="control-label" for="travelPayee">Who paid for your journey?</label>
-                                        <input class="form-control" id="travelPayee"  name="travelPayee" placeholder="Travel paid by?" type="text">
-                                        <p class="help-block">For example: did they pay for the journey themselves? Did a family member
-                                            pay?</p>
-                                    </div>
-                                </form>
-                                <div class="col-md-12">
-                                    <div class="col-md-4">
-                                        <!-- Multiple Radios -->
-                                        <div class="control-group">
-                                            <label class="control-label" for="Marital-status-0">Marital Status</label>
-                                            <div class="controls">
-                                                <label class="radio" for="Marital-status-0">
-                                                    <input type="radio" name="Marital-status" n name="Marital-status-0"  e="Marital-status-0"  id="Marital-status-0" value="Married" checked="checked">Unknown</label>
-                                                <label class="radio" for="Marital-status-0">
-                                                    <input type="radio" name="Marital-status" name="Marital-status-1"  id="Marital-status-1" value="Married">Married</label>
-                                                <label class="radio" for="Marital-status-1">
-                                                    <input type="radio" name="Marital-status" name="Marital-status-2"  id="Marital-status-2" value="Divorced">Divorced</label>
-                                                <label class="radio" for="Marital-status-2">
-                                                    <input type="radio" name="Marital-status" name="Marital-status-3"  id="Marital-status-3" value="Widowed">Widowed</label>
-                                                <label class="radio" for="Marital-status-3">
-                                                    <input type="radio" name="Marital-status" name="Marital-status-4"  id="Marital-status-4" value="Never Married">Never Married</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <!-- Multiple Radios -->
-                                        <div class="control-group">
-                                            <label class="control-label" for="education-status-0">Highest education level</label>
-                                            <div class="controls">
-                                                <label class="radio" for="education-status-0">
-                                                    <input type="radio" name="education-status" name="education-status-0"  id="education-status-0" value="Unknown" checked="checked">Unknown</label>
-                                                <label class="radio" for="social-status-1">
-                                                    <input type="radio" name="education-status" name="education-status-1"  id="education-status-1" value="None">No education completed</label>
-                                                <label class="radio" for="social-status-2">
-                                                    <input type="radio" name="education-status" name="education-status-2"  id="education-status-2" value="Primary">Primary School</label>
-                                                <label class="radio" for="social-status-3">
-                                                    <input type="radio" name="education-status" name="education-status-3"  id="education-status-3" value="Secondary School">Secondary School</label>
-                                                <label class="radio" for="education-status-4">
-                                                    <input type="radio" name="education-status" name="education-status-4"  id="education-status-4" value="Higher Education">Higher Education</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <!-- Multiple Radios -->
-                                        <div class="control-group">
-                                            <label class="control-label" for="social-status-0">Social Status</label>
-                                            <div class="controls">
-                                                <label class="radio" for="social-status-0">
-                                                    <input type="radio" name="social-status" name="social-status-0" id="social-status-0" value="Unknown" checked="checked">Unknown</label>
-                                                <label class="radio" for="social-status-1">
-                                                    <input type="radio" name="social-status" name="social-status-1" id="social-status-1" value="Living with husband">Living with husband</label>
-                                                <label class="radio" for="social-status-2">
-                                                    <input type="radio" name="social-status" name="social-status-2" id="social-status-2" value="Living with family">Living with family</label>
-                                                <label class="radio" for="social-status-3">
-                                                    <input type="radio" name="social-status" name="social-status-3" id="social-status-3" value="Living alone">Living alone</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Textarea -->
-                                <div class="control-group">
-                                    <label class="control-label" for="occupation">What is your occupation?</label>
-                                    <div class="controls">
-                                        <textarea id="occupation" class="occupation" name="textarea">What is your job?</textarea>
-                                    </div>
-                                </div>
 
-                            </div>
-                        </div>
-                    </div>
+<head>
+    <meta charset="utf-8">
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script src="js/pouchdb-3.3.0.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/js.cookie.js"></script>
+    <script src="js/underscore-min.js"></script>
+    <script src="js/app.js"></script>
+    <link href="css/font-awesome4.3.0.min.css" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi"/>
+    <script type="application/javascript">
+        $(document).ready(function (event) {
+            $('a').bind("click", event, save_on_page_change);
+            console.log('begin jq');
+            var id = Cookies.get('id');
+            $('#patientNumber').val(id);
+        });
+    </script>
+</head>
+
+<body ng-app="dricase" ng-controller="SocialCtrl">
+<div ng-controller="SideController">
+      <ion-nav-view>
+
+      </ion-nav-view>
+    </div>
+<ion-side-menus>
+    <!-- Main menu -->
+    <ion-side-menu-content>
+        <ion-header-bar class="bar-dark">
+            <button class="button button-icon icon ion-navicon"></button>
+            <h1 class="title">Social</h1>
+        </ion-header-bar>
+
+        <ion-content class="has-header">
+            <!-- Begin form -->
+            <form>
+            <input name="formName" id="formName" type="hidden" value="social" readonly>
+            <input id="patientNumber" type="hidden" readonly>
+
+            <div class="card">
+                <label class="item item-divider" for="travelMode">How did you get here?</label>
+                <div class="item item-input">
+                    <input class="form-control" id="travelMode" name="travelMode" placeholder="What transport did you use?" type="text">
                 </div>
             </div>
-        </div>
-        <div class="section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <ul class="pager">
-                            <li>
-                                <a href="admin.html">←  Prev</a>
-                            </li>
-                            <li>
-                                <a href="medical.html">Next  →</a>
-                            </li>
-                        </ul>
-                    </div>
+
+            <div class="card">
+                <label class="item item-divider" for="travelDuration">How long did you take to get here?</label>
+                <div class="item item-input">
+                    <input id="travelDuration" name="travelDuration" placeholder="Name" type="text">
+
+                    <p class="help-block">Journey time in days / hours</p>
                 </div>
             </div>
+
+            <div class="card">
+                <label class="item item-divider" for="travelCost">How much did it cost?</label>
+                <div class="item item-input">
+                    <input id="travelCost" name="travelCost" placeholder="Cost and currency" type="text">
+                    <p class="help-block">Journey cost</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <label class="item item-divider" for="travelPayee">Who paid for your journey?</label>
+                <div class="item item-input">
+                    <input id="travelPayee" name="travelPayee" placeholder="Travel paid by?" type="text">
+                    <p class="help-block">For example: did they pay
+                        for the journey themselves? Did a family member pay?</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <label class="item item-divider">Marital status</label>
+
+                <ion-radio
+                        ng-repeat="item in maritalStatusList"
+                        ng-value="item.text">
+                    {{ item.text }}
+                </ion-radio>
+            </div>
+
+            <div class="card">
+                <label class="item item-divider">Highest level of education</label>
+
+                <ion-radio
+                        ng-repeat="item in educationStatusList"
+                        ng-value="item.text">
+                    {{ item.text }}
+                </ion-radio>
+            </div>
+
+            <div class="card">
+                <label class="item item-divider">Highest level of education</label>
+
+                <ion-radio
+                        ng-repeat="item in socialStatusList"
+                        ng-value="item.text">
+                    {{ item.text }}
+                </ion-radio>
+            </div>
+
+            <div class="card">
+                <label class="item item-divider" for="occupation">What is your occupation?</label>
+                <div class="item item-input">
+                    <textarea id="occupation" class="occupation" name="textarea" placeholder="What is your job?"></textarea>
+                </div>
+            </div>
+            </form>
+        </ion-content>
+
+        <div class="tabs">
+            <a class="tab-item" href="admin.html">← Prev</a>
+            <a class="tab-item" href="medical.html">Next →</a>
         </div>
-    </body>
+    </ion-side-menu-content>
+
+    <!-- Side menu -->
+    <ion-side-menu side="left">
+        <ul class="list">
+            <li class="item"><a href="admin.html">Admin</a></li>
+            <li class="item"><a href="#">Social</a></li>
+            <li class="item"><a href="medical.html">Medical</a></li>
+            <li class="item"><a href="status.html">Status</a></li>
+            <li class="item item-divider"></li>
+            <li class="item"><a href="clinical.html">Clinical Exam</a></li>
+            <li class="item"><a href="exam.html">Examination under Anesthesia</a></li>
+            <li class="item item-divider"></li>
+            <li class="item"><a href="treatment.html">Treatment</a></li>
+            <li class="item item-divider"></li>
+            <li class="item"><a href="discharge.html">Discharge</a></li>
+            <li class="item"><a href="followup.html">Follow-up</a></li>
+        </ul>
+    </ion-side-menu>
+</ion-side-menus>
+
+</body>
 
 </html>
