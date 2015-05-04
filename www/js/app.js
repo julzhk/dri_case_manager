@@ -123,24 +123,46 @@ function save_on_page_change(event){
     // update with var id = Cookies.get('id');
     var data = $( "form" ).serializeArray();
     var data_dict = {};
-        _.each(data,function(ele){
+    _.each(data,function(ele){
         data_dict[ele.name] = ele.value
     })
     console.log(data);
     console.log(data_dict);
+    var id = new Date().toISOString();
+    data_dict['_id']= data_dict['formName'] +'::'+ id;
+    data_dict['master_id']= Cookies.get('id');
     var destination_url = event.currentTarget.href;
-    sync();
-    db.get(id).then(function(doc) {
-        data_dict._id=id;
-        data_dict._rev=doc._rev;
-        console.log(data_dict);
-        return db.put(data_dict);
-    }).then(function(response) {
-      // handle response
-    }).catch(function (err) {
-        db_error(err);
-      console.log(err);
+    db.put(data_dict, function callback(err, result) {
+        if (!err) {
+            console.log('Successfully posted a new_record!');
+        } else {
+            db_error(err);
+        }
     });
+
+    //db.put(data_dict, function callback(err, result) {
+    //    if (!err) {
+    //        console.log('Successfully posted a new_record!');
+    //    } else {
+    //        db_error(err);
+    //    }
+    //    console.log(err);
+    //    console.log(result);
+    //});
+
+
+    sync();
+    //db.get(id).then(function(doc) {
+    //    data_dict._id=id;
+    //    data_dict._rev=doc._rev;
+    //    console.log(data_dict);
+    //    return db.put(data_dict);
+    //}).then(function(response) {
+    //  // handle response
+    //}).catch(function (err) {
+    //    db_error(err);
+    //  console.log(err);
+    //});
 
     window.location.href = destination_url;
     event.preventDefault();
