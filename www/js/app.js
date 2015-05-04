@@ -39,8 +39,9 @@ function showrecords(limit,skip, page) {
         limit:limit,
         skip:skip
     }, function(err, doc) {
-        if (typeof doc === "undefined") {
-            console.log('no records')
+        if ((typeof doc === "undefined") || (doc.total_rows == 0)) {
+            console.log('no records');
+        //    todo write 'no records to dom'
         } else {
             if (err==null){
                 write_to_ui(doc.rows);
