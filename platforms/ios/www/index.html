@@ -1,44 +1,78 @@
 <!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="msapplication-tap-highlight" content="no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />\r</head>
-    <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-            <div id="pouchdb-display">
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link href="css/font-awesome4.3.0.min.css" rel="stylesheet" type="text/css">
+    <link href="css/default.bootstrap.css" rel="stylesheet" type="text/css">
+
+    <title>Patient Index Page</title>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="js/pouchdb-3.3.0.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/js.cookie.js"></script>
+    <script src="js/underscore-min.js"></script>
+    <script src="js/app.js"></script>
+    <script type="application/javascript">
+
+        var syncDom = document.getElementById('sync-wrapper');
+//        var remoteCouch = 'http://user:pass@dritest.iriscouch.com/todos';
+        //    var db = new PouchDB('http://localhost:5984/my_database');
+        $( document ).ready(function(event) {
+            $('.add').bind("click", event, add_new_record);
+            sync();
+            console.log('started jq');
+            console.log(Cookies.get('id'));
+            var page= $.urlParam('p');
+            page = parseInt(page, 10);
+            if (isNaN(page)){
+                page = 0;
+            };
+            var limit = 5;
+            var skip = page * limit; // == 'limit' for the first page, 'limitx2' for the second ...
+            showrecords(limit, skip, page);
+        })
+    </script>
+</head>
+<body>
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            Patient Records
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-responsive">
+                            <thead>
+                                <th>date</th>
+                                <th>Number</th>
+                                <th>Name</th>
+                            </thead>
+                            <tbody class="data">
+                            </tbody>
+                        </table>
+                        <span class="nav"></span>
+                        <a href="#" class="add">add record</a>
+                    </div>
+                    <div id="sync-wrapper">
+                    </div>
+                </div>
             </div>
         </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/pouchdb-3.3.0.min.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-    </body>
+    </div>
+</div>
+<script type="text/javascript" src="js/pouchdb-3.3.0.min.js"></script>
+</body>
 </html>
