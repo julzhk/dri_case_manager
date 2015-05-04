@@ -175,4 +175,27 @@ angular.module('dricase', ['ionic'])
     .controller('SideController', function($scope, $ionicSideMenuDelegate){
         $scope.toggleLeft = function() {
             $ionicSideMenuDelegate.toggleLeft();};
-});
+    }).controller('SocialCtrl', function($scope){
+        $scope.maritalStatusList = [
+            {text: "Married"},
+            {text: "Divorced"},
+            {text: "Widowed"},
+            {text: "Never Married"},
+            {text: "Unknown"}
+        ];
+
+        $scope.educationStatusList = [
+            {text: "None"},
+            {text: "Primary School"},
+            {text: "Secondary School"},
+            {text: "Higher Education"},
+            {text: "Unknown"}
+        ];
+
+        $scope.socialStatusList = [
+            {text: "Living with husband"},
+            {text: "Living with family"},
+            {text: "Living with alone"},
+            {text: "Unkown"}
+        ]
+    });

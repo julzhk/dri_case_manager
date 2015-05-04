@@ -198,4 +198,59 @@ angular.module('dricase', ['ionic'])
             {text: "Living with alone"},
             {text: "Unkown"}
         ]
+    }).controller('MedicalCtrl', function($scope){
+        $scope.medicalConditionsList = [
+            {text: "Tuberculosis"},
+            {text: "HIV/AIDS"},
+            {text: "High Blood Pressure"},
+            {text: "Diabetes"},
+            {text: "Epilepsy"},
+            {text: "Hepatitis"},
+            {text: "Other"}
+        ];
+
+        $scope.yearsOfPeriodList = [
+            {text: "Yes"},
+            {text: "No"},
+            {text: "Unknown"}
+        ];
+
+        $scope.causeOfFistulaList = [
+            {text: "Obstetric"},
+            {text: "Caesarean-related"},
+            {text: "Post-gynecological operation"},
+            {text: "Unknown"},
+            {text: "Other"}
+        ];
+
+        $scope.placeOfDeliveryList = [
+            {text: "Home"},
+            {text: "Health Center"},
+            {text: "Hospital"},
+            {text: "Unknown"},
+            {text: "Other"}
+        ];
+
+        $scope.deliveryTypeList = [
+            {text: "Spontaneous Vaginal Delivery"},
+            {text: "Instrumental"},
+            {text: "Caesarean"},
+            {text: "Caesarean Hysterectomy"},
+            {text: "Destructive Craniotomy"},
+            {text: "Unknown"},
+            {text: "Other"}
+        ];
+
+        $scope.deliveryOutcomeList = [
+            {text: "Livebirth"},
+            {text: "Stillbirth"},
+            {text: "Early Neonatal Death"},
+            {text: "Unknown"}
+        ];
+
+        $scope.genderList = [
+            {text: "Male"},
+            {text: "Female"},
+            {text: "Unkown"}
+        ]
     });
