@@ -35,7 +35,7 @@
                 <button class="button button-icon icon ion-navicon"></button>
                 <h1 class="title">Admin</h1>
             </ion-header-bar>
-            <ion-content class="has-header">
+            <ion-content class="has-header has-footer">
                 <!-- Setup -->
                 <div class="card">
                     <div class="item item-text-wrap app">
@@ -51,15 +51,15 @@
                 <!-- End setup -->
                 <!-- Begin form -->
                 <div class="card">
-                    <div class="item item-input item-stacked-label">
-                        <label for="patientNumber" name="patient_number">Patient Number</label>
+                    <label class="item item-divider" for="patientNumber" name="patient_number">Patient Number</label>
+                    <div class="item item-input">
                         <input id="patientNumber" placeholder="Auto generated" type="text" readonly>
                     </div>
                 </div>
 
                 <div class="card">
-                    <div class="item item-input item-stacked-label has-feedback">
-                        <label for="patientName">Patient Name</label>
+                    <label class="item item-divider" for="patientName">Patient Name</label>
+                    <div class="item item-inputhas-feedback">
                         <input id="patientName" placeholder="Name" type="text" name="patientName">
 
                         <p class="help-block">Patient's full name :
@@ -68,8 +68,8 @@
                 </div>
 
                 <div class="card">
-                    <div class="item item-input item-stacked-label has-feedback">
-                        <label for="contactInfo" contenteditable="true">Contact Information</label>
+                    <label class="item item-divider" for="contactInfo" contenteditable="true">Contact Information</label>
+                    <div class="item item-inputhas-feedback">
                         <input id="contactInfo" name="contactInfo" placeholder="Follow-up contact information" type="text">
 
                         <p class="help-block" contenteditable="true">
@@ -79,8 +79,8 @@
 
 
                 <div class="card">
-                    <div class="item item-input item-stacked-label">
-                        <label for="address">Address</label>
+                    <label class="item item-divider" for="address">Address</label>
+                    <div class="item item-input">
                         <textarea id="address" class="address" name="address" placeholder="Address, including town & country"></textarea>
                     </div>
                 </div>
