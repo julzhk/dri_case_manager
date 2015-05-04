@@ -15,7 +15,6 @@
         <script type="application/javascript">
             $(document).ready(function(event) {
                 $('a').bind("click", event, save_on_page_change);
-                console.log('begin jq');
                 var id = Cookies.get('id');
                 $('#patientNumber').val(id);
             });
