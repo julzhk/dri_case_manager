@@ -168,3 +168,141 @@ function save_on_page_change(event){
     event.preventDefault();
 
 }
+
+
+/* IONIC */
+angular.module('dricase', ['ionic'])
+    .controller('SideController', function($scope, $ionicSideMenuDelegate){
+        $scope.toggleLeft = function() {
+            $ionicSideMenuDelegate.toggleLeft();};
+    }).controller('SocialCtrl', function($scope){
+        $scope.maritalStatusList = [
+            {text: "Married"},
+            {text: "Divorced"},
+            {text: "Widowed"},
+            {text: "Never Married"},
+            {text: "Unknown"}
+        ];
+
+        $scope.educationStatusList = [
+            {text: "None"},
+            {text: "Primary School"},
+            {text: "Secondary School"},
+            {text: "Higher Education"},
+            {text: "Unknown"}
+        ];
+
+        $scope.socialStatusList = [
+            {text: "Living with husband"},
+            {text: "Living with family"},
+            {text: "Living with alone"},
+            {text: "Unkown"}
+        ]
+    }).controller('MedicalCtrl', function($scope){
+        $scope.medicalConditionsList = [
+            {text: "Tuberculosis"},
+            {text: "HIV/AIDS"},
+            {text: "High Blood Pressure"},
+            {text: "Diabetes"},
+            {text: "Epilepsy"},
+            {text: "Hepatitis"},
+            {text: "Other"}
+        ];
+
+        $scope.yearsOfPeriodList = [
+            {text: "Yes"},
+            {text: "No"},
+            {text: "Unknown"}
+        ];
+
+        $scope.causeOfFistulaList = [
+            {text: "Obstetric"},
+            {text: "Caesarean-related"},
+            {text: "Post-gynecological operation"},
+            {text: "Unknown"},
+            {text: "Other"}
+        ];
+
+        $scope.placeOfDeliveryList = [
+            {text: "Home"},
+            {text: "Health Center"},
+            {text: "Hospital"},
+            {text: "Unknown"},
+            {text: "Other"}
+        ];
+
+        $scope.deliveryTypeList = [
+            {text: "Spontaneous Vaginal Delivery"},
+            {text: "Instrumental"},
+            {text: "Caesarean"},
+            {text: "Caesarean Hysterectomy"},
+            {text: "Destructive Craniotomy"},
+            {text: "Unknown"},
+            {text: "Other"}
+        ];
+
+        $scope.deliveryOutcomeList = [
+            {text: "Livebirth"},
+            {text: "Stillbirth"},
+            {text: "Early Neonatal Death"},
+            {text: "Unknown"}
+        ];
+
+        $scope.genderList = [
+            {text: "Male"},
+            {text: "Female"},
+            {text: "Unkown"}
+        ]
+    }).controller('StatusCtrl', function($scope){
+        $scope.urinalScoreList = [
+            {text: "No urinary incontinence", value: 1},
+            {text: "Patient leaks urine when coughing, laughing, straining", value: 2},
+            {text: "Patient leaks urine when walking", value: 3},
+            {text: "Patient leaks urine when standing, sitting, or lying. Patient still able to void", value: 4},
+            {text: "Patient leaks urine at any moment and is unable to void", value: 5},
+            {text: "Unknown", value: 0}
+        ];
+
+        $scope.fecalScoreList = [
+            {text: "Patient controls stool completely", value: 1},
+            {text: "Patient cannot control flatus", value: 2},
+            {text: "Patient cannot control flatus, liquid stool", value: 3},
+            {text: "Patient cannot control flatus, liquid stool, or solid stool", value: 4},
+            {text: "Unkown", value: 0}
+        ]
+    }).controller('ClinicalCtrl', function($scope){
+        $scope.yesNoList = [
+            {text: "Yes", value: 1},
+            {text: "No", value: 0},
+            {text: "Unknown", value: 2}
+        ];
+
+        $scope.dyeTestList = [
+            {text: "Positive", value: 1},
+            {text: "Negative", value: 2},
+            {text: "Not Done", value: 3},
+            {text: "Unknown", value: 0}
+        ];
+
+        $scope.dermatitisList = [
+            {text: "None", value: 1},
+            {text: "Moderate", value: 2},
+            {text: "Severe", value: 3},
+            {text: "Unknown", value: 0}
+
+        ];
+    }).controller('ExamCtrl', function($scope){
+        $scope.meatusShapeList = [
+            {text: "Normal", value: 1},
+            {text: "Narrowed", value: 2},
+            {text: "Gaping", value: 3},
+            {text: "Unknown", value: 0}
+        ];
+
+        $scope.meatusPositionList = [
+            {text: "Normal", value: 1},
+            {text: "Anteriorly displaced", value: 2},
+            {text: "Posteriorly displaced", value: 3},
+            {text: "Unknown", value: 0}
+        ];
+    });

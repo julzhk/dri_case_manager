@@ -2,81 +2,65 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <script type="text/javascript" src="js/jquery2.0.3.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap3.3.2.min.js"></script>
-    <link href="css/font-awesome4.3.0.min.css"
-          rel="stylesheet" type="text/css">
-    <link href="css/default.bootstrap.css"
-          rel="stylesheet" type="text/css">
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script src="js/pouchdb-3.3.0.min.js"></script>
+    <script src="js/js.cookie.js"></script>
+    <script src="js/underscore-min.js"></script>
+    <script src="js/app.js"></script>
+    <link href="css/font-awesome4.3.0.min.css" rel="stylesheet" type="text/css">
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 </head>
 
-<body>
-<div class="section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="btn-toolbar" role="toolbar">
-                    <div class="btn-group">
-                        <a type="button" class="btn btn-default" href="admin.html">Admin</a>
-                        <a type="button" class="btn btn-default" href="social.html">Social</a>
-                        <a type="button" class="btn btn-default" href="medical.html">Medical</a>
-                        <a type="button" class="btn btn-default" href="status.html">Status</a>
-                    </div>
-                    <div class="btn-group">
-                        <a type="button" class="btn btn-default" href="clinical.html">Clinical Exam</a>
-                        <a type="button" class="btn btn-default" href="exam.html">Examination under Anesthesia</a>
-                    </div>
-                    <div class="btn-group">
-                        <a type="button" class="btn btn-default" href="treatment.html">Treatment</a>
-                    </div>
-                    <div class="btn-group">
-                        <a type="button" class="btn btn-default" href="discharge.html">Discharge</a>
-                        <a type="button" class="btn btn-primary" href="followup.html">Follow-up</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1>hed</h1>
+<body ng-app="dricase">
+<div ng-controller="SideController">
+    <ion-nav-view>
 
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">panel</h3>
-                    </div>
-                    <div class="panel-body">
-                        <form role="form">
-                            <div class="form-group">
-                                1
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    </ion-nav-view>
 </div>
-<div class="section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <ul class="pager">
-                    <li>
-                        <a href="discharge.html">← Prev</a>
-                    </li>
-                    <li>
-                        <!--<a href="#">Next →</a>-->
-                    </li>
-                </ul>
+<ion-side-menus>
+    <!-- Main menu -->
+    <ion-side-menu-content>
+        <ion-header-bar class="bar-dark">
+            <button class="button button-icon icon ion-navicon"></button>
+            <h1 class="title">Follow up</h1>
+        </ion-header-bar>
+        <ion-content class="has-header has-footer">
+
+            <div class="card">
+                <div class="item item-text-wrap">Provide form</div>
             </div>
+
+        </ion-content>
+
+        <div class="tabs">
+            <a class="tab-item" href="discharge.html">← Prev</a>
+            <p class="tab-item">&nbsp;</p>
         </div>
-    </div>
-</div>
+    </ion-side-menu-content>
+
+    <!-- Side menu -->
+    <ion-side-menu side="left">
+        <ul class="list">
+            <li class="item"><a href="admin.html">Admin</a></li>
+            <li class="item"><a href="social.html">Social</a></li>
+            <li class="item"><a href="medical.html">Medical</a></li>
+            <li class="item"><a href="status.html">Status</a></li>
+            <li class="item item-divider"></li>
+            <li class="item"><a href="clinical.html">Clinical Exam</a></li>
+            <li class="item"><a href="exam.html">Examination under
+                Anesthesia</a></li>
+            <li class="item item-divider"></li>
+            <li class="item"><a href="treatment.html">Treatment</a></li>
+            <li class="item item-divider"></li>
+            <li class="item"><a href="discharge.html">Discharge</a></li>
+            <li class="item"><a href="#">Follow-up</a></li>
+        </ul>
+    </ion-side-menu>
+</ion-side-menus>
 </body>
-
 </html>

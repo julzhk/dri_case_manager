@@ -3,273 +3,157 @@
 
 <head>
     <meta charset="utf-8">
-    <script type="text/javascript" src="js/jquery2.0.3.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap3.3.2.min.js"></script>
-    <link href="css/font-awesome4.3.0.min.css"
-          rel="stylesheet" type="text/css">
-    <link href="css/default.bootstrap.css"
-          rel="stylesheet" type="text/css">
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script src="js/pouchdb-3.3.0.min.js"></script>
+    <script src="js/js.cookie.js"></script>
+    <script src="js/underscore-min.js"></script>
+    <script src="js/app.js"></script>
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 </head>
+    <body ng-app="dricase" ng-controller="MedicalCtrl">
+    <div ng-controller="SideController">
+      <ion-nav-view>
 
-<body>
-<div class="section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="btn-toolbar" role="toolbar">
-                    <div class="btn-group">
-                        <a type="button" class="btn btn-default" href="admin.html">Admin</a>
-                        <a type="button" class="btn btn-default" href="social.html">Social</a>
-                        <a type="button" class="btn btn-primary" href="medical.html">Medical</a>
-                        <a type="button" class="btn btn-default" href="status.html">Status</a>
+      </ion-nav-view>
+    </div>
+    <ion-side-menus>
+        <!-- Main menu -->
+        <ion-side-menu-content>
+            <ion-header-bar class="bar-dark">
+                <button class="button button-icon icon ion-navicon"></button>
+                <h1 class="title">Medical</h1>
+            </ion-header-bar>
+            <ion-content class="has-header has-footer">
+
+                <!-- form -->
+                <div class="card">
+                    <label class="item item-divider">
+                        Are you suffering from any of the following medical conditions?
+                    </label>
+                    <ion-checkbox ng-repeat="item in medicalConditionsList">
+                        {{ item.text }}
+                    </ion-checkbox>
+                    <div class="item item-input item-stacked-label">
+                        <textarea id="other-conditions" class="other-conditions" name="textarea" placeholder="Any other conditions?"></textarea>
                     </div>
-                    <div class="btn-group">
-                        <a type="button" class="btn btn-default" href="clinical.html">Clinical Exam</a>
-                        <a type="button" class="btn btn-default" href="exam.html">Examination under Anesthesia</a>
-                    </div>
-                    <div class="btn-group">
-                        <a type="button" class="btn btn-default" href="treatment.html">Treatment</a>
-                    </div>
-                    <div class="btn-group">
-                        <a type="button" class="btn btn-default" href="discharge.html">Discharge</a>
-                        <a type="button" class="btn btn-default" href="followup.html">Follow-up</a>
+                    <div class="item item-input item-stacked-label">
+                        <textarea id="allergies" class="allergies" name="textarea" placeholder="Any allergies?"></textarea>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1></h1>
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Medical History</h3>
+
+                <div class="card">
+                    <label class="item item-divider" for="firstPeriod">How old were you when you had your first period?</label>
+                    <div class="item item-input">
+                        <input id="firstPeriod" placeholder="Your age in years?" type="text">
                     </div>
 
-                    <div class="panel-body">
-                        <form role="form">
-                            <div class="form-group">
-                                <legend>Medical Conditions</legend>
-                                <fieldset>
-                                <!-- Multiple Checkboxes -->
-                                <div class="control-group">
-                                      <label class="control-label" for="checkboxes">Are you suffering from any of the following medical conditions?</label>
-                                          <div class="controls">
-                                            <label class="checkbox" for="checkboxes-0">
-                                              <input type="checkbox" name="checkboxes" id="checkboxes-0" value="Tuberculosis">
-                                              Tuberculosis
-                                            </label>
-                                            <label class="checkbox" for="checkboxes-1">
-                                              <input type="checkbox" name="checkboxes" id="checkboxes-1" value="HIV/AIDS">
-                                              HIV/AIDS
-                                            </label>
-                                            <label class="checkbox" for="checkboxes-2">
-                                              <input type="checkbox" name="checkboxes" id="checkboxes-2" value="High Blood Pressure">
-                                              High Blood Pressure
-                                            </label>
-                                            <label class="checkbox" for="checkboxes-3">
-                                              <input type="checkbox" name="checkboxes" id="checkboxes-3" value="Diabetes">
-                                              Diabetes
-                                            </label>
-                                            <label class="checkbox" for="checkboxes-4">
-                                              <input type="checkbox" name="checkboxes" id="checkboxes-4" value="Epilepsy">
-                                              Epilepsy
-                                            </label>
-                                            <label class="checkbox" for="checkboxes-5">
-                                              <input type="checkbox" name="checkboxes" id="checkboxes-5" value="Hepatitis">
-                                              Hepatitis
-                                            </label>
-                                            <label class="checkbox" for="checkboxes-6">
-                                              <input type="checkbox" name="checkboxes" id="checkboxes-6" value="Other">
-                                              Other
-                                            </label>
-                                          </div>
-                                    <!-- Textarea -->
-                                    <div class="control-group">
-                                        <label class="control-label" for="other-conditions">Please list any other conditions</label>
-                                        <div class="controls">
-                                            <textarea id="other-conditions" class="other-conditions" name="textarea">Any other conditions?</textarea>
-                                        </div>
-                                    </div>
+                    <label class="item item-divider" for="periodsBeforeMarriage">How many periods did you have before you were first married</label>
+                    <div class="item item-input">
+                        <input id="periodsBeforeMarriage" placeholder="Number of periods" type="text">
+                    </div>
 
-                                    <!-- Textarea -->
-                                    <div class="control-group">
-                                        <label class="control-label" for="other-conditions">Please list any allergies</label>
-                                        <div class="controls">
-                                            <textarea id="allergies" class="allergies" name="textarea">Any allergies?</textarea>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                </fieldset>
-                                </div>
-
-                            <div class="form-group">
-                                <legend>Obs/ Gyn History</legend>
-                                <fieldset>
-                                    <div class="form-group">
-                                        <label class="control-label" for="firstPeriod">How old were you when you had your first period?</label>
-                                        <input class="form-control" id="firstPeriod" placeholder="Your age in years?" type="text">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label" for="periodsBeforeMarriage">How many periods did you have before you were first married?</label>
-                                        <input class="form-control" id="periodsBeforeMarriage" placeholder="Number of periods?" type="text">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label" for="periodsBeforePregnancy">How many periods did you have before your first pregnancy?</label>
-                                        <input class="form-control" id="periodsBeforePregnancy" placeholder="Number of periods?" type="text">
-                                    </div>
-
-                                    <!-- Multiple Radios -->
-                                    <div class="control-group">
-                                        <label class="control-label" for="periods-three-years-0">Did you have more than 3 years of periods before your first pregnancy?</label>
-                                        <div class="controls">
-                                            <label class="radio" for="periods-three-years-0">
-                                                <input type="radio" name="periods-three-years" id="periods-three-years-0" value="Unknown" checked="checked">Unknown</label>
-                                            <label class="radio" for="periods-three-years-1">
-                                                <input type="radio" name="periods-three-years" id="periods-three-years-1" value="Yes">Yes</label>
-                                            <label class="radio" for="periods-three-years-2">
-                                                <input type="radio" name="periods-three-years" id="periods-three-years-2" value="No">No</label>
-                                        </div>
-                                    </div>
-
-                                    <!-- Multiple Radios -->
-                                    <div class="control-group">
-                                        <label class="control-label" for="fistula-cause-0">Cause of Fistula?</label>
-                                        <div class="controls">
-                                            <label class="radio" for="fistula-cause-0">
-                                                <input type="radio" name="fistula-cause" id="fistula-cause-0" value="Unknown" checked="checked">Unknown</label>
-                                            <label class="radio" for="fistula-cause-1">
-                                                <input type="radio" name="fistula-cause" id="fistula-cause-1" value="Obstetric">Obstetric</label>
-                                            <label class="radio" for="fistula-cause-2">
-                                                <input type="radio" name="fistula-cause" id="fistula-cause-2" value="Caesarean-related">Caesarean-related</label>
-                                            <label class="radio" for="fistula-cause-3">
-                                                <input type="radio" name="fistula-cause" id="fistula-cause-3" value="Post-gynecological operation">Post-gynecological operation</label>
-                                            <label class="radio" for="fistula-cause-4">
-                                                <input type="radio" name="fistula-cause" id="fistula-cause-4" value="Other">Other</label>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label" for="fistula-cause-other">Please specify other reasons?</label>
-                                            <input class="form-control" id="fistula-cause-other" placeholder="Other?" type="text">
-                                        </div>
-                                    </div>
-
-
-                                </fieldset>
-                                <legend>Details of Pregnancies</legend>
-
-                                      <div class="form-group">
-                                        <label for="pregnancyYear">Year</label>
-                                        <input type="text" class="form-control" id="pregnancyYear" placeholder="Year of pregnancy">
-                                      </div>
-
-                                <div class="control-group">
-                                    <label class="control-label" for="pregnancy-place-0">Place of delivery?</label>
-                                    <div class="controls">
-                                        <label class="radio" for="pregnancy-place">
-                                            <input type="radio" name="pregnancy-place" id="pregnancy-place-0" value="Unknown" checked="checked">Unknown</label>
-                                        <label class="radio" for="pregnancy-place-1">
-                                            <input type="radio" name="pregnancy-place" id="pregnancy-place-1" value="Home">Home</label>
-                                        <label class="radio" for="pregnancy-place-2">
-                                            <input type="radio" name="pregnancy-place" id="pregnancy-place-2" value="Health Center">Health Center</label>
-                                        <label class="radio" for="pregnancy-place-3">
-                                            <input type="radio" name="pregnancy-place" id="pregnancy-place-3" value="Hospital">Hospital</label>
-                                        <label class="radio" for="pregnancy-place-4">
-                                            <input type="radio" name="pregnancy-place" id="pregnancy-place-4" value="Other">Other</label>
-                                    </div>
-                                </div>
-
-                                <div class="control-group">
-                                    <label class="control-label" for="delivery-type-0">Delivery type?</label>
-                                    <div class="controls">
-                                        <label class="radio" for="delivery-type-0">
-                                            <input type="radio" name="delivery-type" id="delivery-type-0" value="Unknown" checked="checked">Unknown</label>
-                                        <label class="radio" for="delivery-type-1">
-                                            <input type="radio" name="delivery-type" id="delivery-type-1" value="Spontaneous Vaginal Delivery">Spontaneous Vaginal Delivery</label>
-                                        <label class="radio" for="delivery-type-2">
-                                            <input type="radio" name="delivery-type" id="delivery-type-2" value="Instrumental">Instrumental</label>
-                                        <label class="radio" for="delivery-type-3">
-                                            <input type="radio" name="delivery-type" id="delivery-type-3" value="Caesarean">Caesarean</label>
-                                        <label class="radio" for="delivery-type-4">
-                                            <input type="radio" name="delivery-type" id="delivery-type-4" value="Caesarean Hysterectomy">Caesarean §Hysterectomy</label>
-                                        <label class="radio" for="delivery-type-4">
-                                            <input type="radio" name="delivery-type" id="delivery-type-5" value="Destructive Craniotomy">Destructive Craniotomy</label>
-                                        <label class="radio" for="delivery-type-4">
-                                            <input type="radio" name="delivery-type" id="delivery-type-6" value="Other">Other</label>
-                                    </div>
-                                </div>
-                                
-                                <div class="control-group">
-                                    <label class="control-label" for="delivery-outcome-0">Delivery outcome?</label>
-                                    <div class="controls">
-                                        <label class="radio" for="delivery-outcome-0">
-                                            <input type="radio" name="delivery-outcome" id="delivery-outcome-0" value="Unknown" checked="checked">Unknown</label>
-                                        <label class="radio" for="delivery-outcome-1">
-                                            <input type="radio" name="delivery-outcome" id="delivery-outcome-1" value="Livebirth">Livebirth</label>
-                                        <label class="radio" for="delivery-outcome-2">
-                                            <input type="radio" name="delivery-outcome" id="delivery-outcome-2" value="Stillbirth">Stillbirth</label>
-                                        <label class="radio" for="delivery-outcome-3">
-                                            <input type="radio" name="delivery-outcome" id="delivery-outcome-3" value="Early Neonatal Death">Early Neonatal Death</label>
-                                        <label class="radio" for="delivery-outcome-4">
-                                    </div>
-                                </div>
-
-                                <div class="control-group">
-                                    <label class="control-label" for="baby-gender-0">Sex of Baby?</label>
-                                    <div class="controls">
-                                        <label class="radio" for="baby-gender-0">
-                                            <input type="radio" name="baby-gender" id="baby-gender-0" value="Unknown" checked="checked">Unknown</label>
-                                        <label class="radio" for="baby-gender-1">
-                                            <input type="radio" name="baby-gender" id="baby-gender-1" value="Male">Male</label>
-                                        <label class="radio" for="baby-gender-2">
-                                            <input type="radio" name="baby-gender" id="baby-gender-2" value="Female">Female</label>
-                                    </div>
-                                </div>
-                                
-                                
-                                <div class="control-group">
-                                    <label class="control-label" for="caused-fistula-0">Did this pregnancy cause the fistula?</label>
-                                    <div class="controls">
-                                        <label class="radio" for="caused-fistula-0">
-                                            <input type="radio" name="caused-fistula" id="caused-fistula-0" value="Unknown" checked="checked">Unknown</label>
-                                        <label class="radio" for="caused-fistula-1">
-                                            <input type="radio" name="caused-fistula" id="caused-fistula-1" value="Yes">Yes</label>
-                                        <label class="radio" for="caused-fistula-2">
-                                            <input type="radio" name="caused-fistula" id="caused-fistula-2" value="No">No</label>
-                                    </div>
-                                </div>
-
-
-
-                                </div>
-                        </form>
+                     <label class="item item-divider" for="periodsBeforePregnancy">How many periods did you have before your first pregnancy?</label>
+                    <div class="item item-input">
+                        <input id="periodsBeforePregnancy" placeholder="Number of periods" type="text">
                     </div>
                 </div>
-            </div>
+
+                <div class="card">
+                    <label class="item item-divider">Did you have more than 3 years of periods before your first pregnancy?</label>
+                    <ion-radio
+                            ng-repeat="item in yearsOfPeriodList"
+                            ng-value="item.text">
+                        {{ item.text }}
+                    </ion-radio>
+                </div>
+
+                <div class="card">
+                    <label class="item item-divider">Cause of Fistula?</label>
+                    <ion-radio
+                            ng-repeat="item in causeOfFistulaList"
+                            ng-value="item.text">
+                        {{ item.text }}
+                    </ion-radio>
+                    <div class="item item-input">
+                        <input id="fistula-cause-other" placeholder="Other? Please specify" type="text">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <label class="item item-divider" for="pregnancyYear">Year of Pregnancy</label>
+                    <div class="item item-input">
+                        <input type="tel" maxlength="4" class="form-control" id="pregnancyYear" placeholder="Year of pregnancy">
+                    </div>
+                    <label class="item item-divider">Place of delivery?</label>
+                    <ion-radio
+                            ng-repeat="item in placeOfDeliveryList"
+                            ng-value="item.text">
+                        {{ item.text }}
+                    </ion-radio>
+                    <div class="item item-input">
+                        <input id="pregnancy-place-other" placeholder="Other? Please specify" type="text">
+                    </div>
+                    <label class="item item-divider">Delivery type?</label>
+                    <ion-radio
+                            ng-repeat="item in deliveryTypeList"
+                            ng-value="item.text">
+                        {{ item.text }}
+                    </ion-radio>
+                    <div class="item item-input">
+                        <input id="delivery-type-other" placeholder="Other? Please specify" type="text">
+                    </div>
+                    <label class="item item-divider">Delivery outcome?</label>
+                    <ion-radio
+                            ng-repeat="item in deliveryOutcomeList"
+                            ng-value="item.text">
+                        {{ item.text }}
+                    </ion-radio>
+                    <label class="item item-divider">Sex of baby?</label>
+                    <ion-radio
+                            ng-repeat="item in genderList"
+                            ng-value="item.text">
+                        {{ item.text }}
+                    </ion-radio>
+                    <label class="item item-divider">Did this pregnancy cause the fistula?</label>
+                    <ion-radio
+                            ng-repeat="item in yearsOfPeriodList"
+                            ng-value="item.text">
+                        {{ item.text }}
+                    </ion-radio>
+                </div>
+
+        </ion-content>
+
+        <div class="tabs">
+            <a class="tab-item" href="social.html">← Prev</a>
+            <a class="tab-item" href="status.html">Next →</a>
         </div>
-    </div>
-</div>
-<div class="section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <ul class="pager">
-                    <li>
-                        <a href="social.html">← Prev</a>
-                    </li>
-                    <li>
-                        <a href="status.html">Next →</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
+    </ion-side-menu-content>
+
+    <!-- Side menu -->
+    <ion-side-menu side="left">
+        <ul class="list">
+            <li class="item"><a href="admin.html">Admin</a></li>
+            <li class="item"><a href="social.html">Social</a></li>
+            <li class="item"><a href="#">Medical</a></li>
+            <li class="item"><a href="status.html">Status</a></li>
+            <li class="item item-divider"></li>
+            <li class="item"><a href="clinical.html">Clinical Exam</a></li>
+            <li class="item"><a href="exam.html">Examination under Anesthesia</a></li>
+            <li class="item item-divider"></li>
+            <li class="item"><a href="treatment.html">Treatment</a></li>
+            <li class="item item-divider"></li>
+            <li class="item"><a href="discharge.html">Discharge</a></li>
+            <li class="item"><a href="followup.html">Follow-up</a></li>
+        </ul>
+    </ion-side-menu>
+</ion-side-menus>
+
 </body>
 
 </html>

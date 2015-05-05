@@ -2,174 +2,152 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <script type="text/javascript" src="js/jquery2.0.3.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap3.3.2.min.js"></script>
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script src="js/pouchdb-3.3.0.min.js"></script>
+    <script src="js/js.cookie.js"></script>
+    <script src="js/underscore-min.js"></script>
+    <script src="js/app.js"></script>
     <link href="css/font-awesome4.3.0.min.css" rel="stylesheet" type="text/css">
-    <link href="css/default.bootstrap.css" rel="stylesheet" type="text/css">
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 </head>
 
-<body>
-<div class="section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="btn-toolbar" role="toolbar">
-                    <div class="btn-group">
-                        <a type="button" class="btn btn-default" href="admin.html">Admin</a>
-                        <a type="button" class="btn btn-default" href="social.html">Social</a>
-                        <a type="button" class="btn btn-default" href="medical.html">Medical</a>
-                        <a type="button" class="btn btn-default" href="status.html">Status</a>
-                    </div>
-                    <div class="btn-group">
-                        <a type="button" class="btn btn-default" href="clinical.html">Clinical Exam</a>
-                        <a type="button" class="btn btn-primary" href="exam.html">Examination under Anesthesia</a>
-                    </div>
-                    <div class="btn-group">
-                        <a type="button" class="btn btn-default" href="treatment.html">Treatment</a>
-                    </div>
-                    <div class="btn-group">
-                        <a type="button" class="btn btn-default" href="discharge.html">Discharge</a>
-                        <a type="button" class="btn btn-default" href="followup.html">Follow-up</a>
-                    </div>
+<body ng-app="dricase" ng-controller="ExamCtrl">
+<div ng-controller="SideController">
+    <ion-nav-view>
+
+    </ion-nav-view>
+</div>
+<ion-side-menus>
+    <!-- Main menu -->
+    <ion-side-menu-content>
+        <ion-header-bar class="bar-dark">
+            <button class="button button-icon icon ion-navicon"></button>
+            <h1 class="title">Examination under anesthesia</h1>
+        </ion-header-bar>
+        <ion-content class="has-header has-footer">
+
+            <div class="card">
+                <label class="item item-divider" for="date-of-exam">
+                    Date of examination (dd/mm/yyyy)?</label>
+                <div class="item item-input">
+                    <input id="date-of-exam" placeholder="date of exam (dd/mm/yyyy)" type="date">
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-<div class="section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1></h1>
 
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Examination under anesthesia</h3>
-                    </div>
-                    <div class="panel-body">
-                        <form role="form">
-                             <div class="form-group">
-                                <fieldset>
-                                    <div class="form-group">
-                                        <label class="control-label" for="date-of-exam">Date of examination (dd/mm/yyyy)?</label>
-                                        <input class="form-control" id="date-of-exam" placeholder="date of exam (dd/mm/yyyy)" type="date">
-                                    </div>
-                                </fieldset>
-
-                                 <legend>Team</legend>
-                                <fieldset>
-                                    <div class="form-group">
-                                        <label class="control-label" for="surgeon-name">Surgeon</label>
-                                        <input class="form-control" id="surgeon-name" placeholder="Surgeon's name" type="text">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label" for="assistant-name">Assistant</label>
-                                        <input class="form-control" id="assistant-name" placeholder="Assistant's name" type="text">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label" for="scrub-nurse-name">Scrub-nurse</label>
-                                        <input class="form-control" id="scrub-nurse-name" placeholder="Scrub-nurse's name" type="text">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label" for="theatre-nurse-name">Theatre Nurse</label>
-                                        <input class="form-control" id="theatre-nurse-name" placeholder="Theatre-nurse's name" type="text">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label" for="anesthetist-name">Anesthetist</label>
-                                        <input class="form-control" id="anesthetist-name" placeholder="anesthetist's name" type="text">
-                                    </div>
-                                </fieldset>
-                            <legend>Anesthesia</legend>
-                                 <fieldset>
-                                     <div class="form-group">
-                                        <label class="control-label" for="spinal-anesthesia-level">Spinal Anesthesia Level</label>
-                                        <input class="form-control" id="spinal-anesthesia-level" placeholder="Spinal Anesthesia Level" type="text">
-                                    </div>
-
-                                 </fieldset>
-                                 <!-- Textarea -->
-                                    <div class="control-group">
-                                        <label class="control-label" for="medication">Medication used and dosage</label>
-                                        <div class="controls">
-                                            <textarea id="medication" class="medication" name="textarea">Medication?</textarea>
-                                        </div>
-                                    </div>
-                                     <div class="form-group">
-                                        <label class="control-label" for="needle-size">Size of needle used (G)</label>
-                                        <input class="form-control" id="needle-size" placeholder="Needle Size (G)" type="number">
-                                    </div>
-                                 <legend>
-                                     Anatomy
-                                 </legend>
-                                    <div class="form-group">
-                                        <label class="control-label" for="pubic-arch-angle">Size of the Pubic Arch (in degrees)</label>
-                                        <input class="form-control" id="pubic-arch-angle" placeholder="Size of the Pubic Arch (in degrees)" type="number">
-                                    </div>
-
-                                 <!-- Multiple Radios -->
-                                        <div class="control-group">
-                                            <label class="control-label" for="meatus-shape-0">Shape of the Meatus of the Urethra</label>
-                                            <div class="controls">
-                                                <label class="radio" for="meatus-shape-0">
-                                                    <input type="radio" name="meatus-shape" id="meatus-shape-0" value="?-Unknown" checked="checked">Unknown</label>
-                                                <label class="radio" for="meatus-shape-1">
-                                                    <input type="radio" name="meatus-shape" id="meatus-shape-1" value="normal">Normal</label>
-                                                <label class="radio" for="meatus-shape-2">
-                                                    <input type="radio" name="meatus-shape" id="meatus-shape-2" value="narrowed">Narrowed</label>
-                                                <label class="radio" for="meatus-shape-3">
-                                                    <input type="radio" name="meatus-shape" id="meatus-shape-3" value="gaping">Gaping</label>
-                                            </div>
-                                        </div>
-
-                                 <!-- Multiple Radios -->
-                                        <div class="control-group">
-                                            <label class="control-label" for="meatus-position-0">Position of the Meatus</label>
-                                            <div class="controls">
-                                                <label class="radio" for="meatus-position-0">
-                                                    <input type="radio" name="meatus-position" id="meatus-position-0" value="?-Unknown" checked="checked">Unknown</label>
-                                                <label class="radio" for="meatus-position-1">
-                                                    <input type="radio" name="meatus-position" id="meatus-position-1" value="normal">Normal</label>
-                                                <label class="radio" for="meatus-position-2">
-                                                    <input type="radio" name="meatus-position" id="meatus-position-2" value="anteriorly-displaced">Anteriorly displaced</label>
-                                                <label class="radio" for="meatus-position-3">
-                                                    <input type="radio" name="meatus-position" id="meatus-position-3" value="posteriorly-displaced">Posteriorly displaced</label>
-                                            </div>
-                                        </div>
-                                          <div class="form-group">
-                                            <label class="control-label" for="vagina-anterior-length">Length of anterior vaginal wall (cm)</label>
-                                            <input class="form-control" id="vagina-anterior-length" placeholder="Length of anterior vaginal wall (cm)" type="number">
-                                          </div>
-
-                                          <div class="form-group">
-                                            <label class="control-label" for="vagina-posterior-length">Length of posterior vaginal wall (cm)</label>
-                                            <input class="form-control" id="vagina-posterior-length" placeholder="Length of posterior vaginal wall (cm)" type="number">
-                                          </div>
-
-                            </div>
-                        </form>
-                    </div>
+            <div class="card">
+                <label class="item item-divider" for="surgeon-name">Surgeon</label>
+                <div class="item item-input">
+                    <input id="surgeon-name" placeholder="Surgeon's name" type="text">
+                </div>
+                <label class="item item-divider" for="assistant-name">Assistant</label>
+                <div class="item item-input">
+                    <input id="assistant-name" placeholder="Assistant's name" type="text">
+                </div>
+                <label class="item item-divider" for="scrub-nurse-name">Scrub-nurse</label>
+                <div class="item item-input">
+                    <input id="scrub-nurse-name" placeholder="Scrub-nurse's name" type="text">
+                </div>
+                <label class="item item-divider" for="theatre-nurse-name">Theatre Nurse</label>
+                <div class="item item-input">
+                    <input id="theatre-nurse-name" placeholder="Theatre-nurse's name" type="text">
+                </div>
+                <label class="item item-divider" for="anesthetist-name">Anesthetist</label>
+                <div class="item item-input">
+                    <input id="anesthetist-name" placeholder="anesthetist's name" type="text">
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-<div class="section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <ul class="pager">
-                    <li>
-                        <a href="clinical.html">← Prev</a>
-                    </li>
-                    <li>
-                        <a href="treatment.html">Next →</a>
-                    </li>
-                </ul>
+
+            <div class="card">
+                <label class="item item-divider" for="spinal-anesthesia-level">Spinal Anesthesia Level</label>
+                <div class="item item-input">
+                    <input class="form-control" id="spinal-anesthesia-level" placeholder="Spinal Anesthesia Level" type="text">
+                </div>
             </div>
+
+            <div class="card">
+                <label class="item item-divider" for="medication">Medication used and dosage</label>
+                <div class="item item-input">
+                    <textarea id="medication" class="medication" name="textarea" placeholder="Medication?"></textarea>
+                </div>
+            </div>
+
+            <div class="card">
+                <label class="item item-divider" for="needle-size">Size of needle used (G)</label>
+                <div class="item item-input">
+                    <input class="form-control" id="needle-size" placeholder="Needle Size (G)" type="number">
+                </div>
+            </div>
+
+            <div class="card">
+                <label class="item item-divider" for="pubic-arch-angle">Size of the Pubic Arch (in degrees)</label>
+                <div class="item item-input">
+                    <input class="form-control" id="pubic-arch-angle" placeholder="Size of the Pubic Arch (in degrees)" type="number">
+                </div>
+            </div>
+
+            <div class="card">
+                <label class="item item-divider">Shape of the Meatus of the Urethra</label>
+                <ion-radio
+                        ng-repeat="item in meatusShapeList"
+                        ng-value="item.value">
+                    {{ item.text }}
+                </ion-radio>
+            </div>
+
+            <div class="card">
+                <label class="item item-divider">Position of the Meatus</label>
+                <ion-radio
+                        ng-repeat="item in meatusPositionList"
+                        ng-value="item.value">
+                    {{ item.text }}
+                </ion-radio>
+            </div>
+
+            <div class="card">
+                <label class="item item-divider" for="vagina-anterior-length">Length of anterior vaginal wall (cm)</label>
+                <div class="item item-input">
+                    <input class="form-control" id="vagina-anterior-length" placeholder="Length of anterior vaginal wall (cm)" type="number">
+                </div>
+            </div>
+
+            <div class="card">
+                <label class="item item-divider" for="vagina-posterior-length">Length of posterior vaginal wall (cm)</label>
+                <div class="item item-input">
+                    <input class="form-control" id="vagina-posterior-length" placeholder="Length of posterior vaginal wall (cm)" type="number">
+                </div>
+            </div>
+
+        </ion-content>
+
+        <div class="tabs">
+            <a class="tab-item" href="clinical.html">← Prev</a>
+            <a class="tab-item" href="treatment.html">Next →</a>
         </div>
-    </div>
-</div>
+    </ion-side-menu-content>
+
+    <!-- Side menu -->
+    <ion-side-menu side="left">
+        <ul class="list">
+            <li class="item"><a href="admin.html">Admin</a></li>
+            <li class="item"><a href="social.html">Social</a></li>
+            <li class="item"><a href="medical.html">Medical</a></li>
+            <li class="item"><a href="status.html">Status</a></li>
+            <li class="item item-divider"></li>
+            <li class="item"><a href="clinical.html">Clinical Exam</a></li>
+            <li class="item"><a href="#">Examination under
+                Anesthesia</a></li>
+            <li class="item item-divider"></li>
+            <li class="item"><a href="treatment.html">Treatment</a></li>
+            <li class="item item-divider"></li>
+            <li class="item"><a href="discharge.html">Discharge</a></li>
+            <li class="item"><a href="followup.html">Follow-up</a></li>
+        </ul>
+    </ion-side-menu>
+</ion-side-menus>
 </body>
-
 </html>
