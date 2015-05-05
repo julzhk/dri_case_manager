@@ -253,4 +253,21 @@ angular.module('dricase', ['ionic'])
             {text: "Female"},
             {text: "Unkown"}
         ]
+    }).controller('StatusCtrl', function($scope){
+        $scope.urinalScoreList = [
+            {text: "No urinary incontinence", value: 1},
+            {text: "Patient leaks urine when coughing, laughing, straining", value: 2},
+            {text: "Patient leaks urine when walking", value: 3},
+            {text: "Patient leaks urine when standing, sitting, or lying. Patient still able to void", value: 4},
+            {text: "Patient leaks urine at any moment and is unable to void", value: 5},
+            {text: "Unknown", value: 0}
+        ];
+
+        $scope.fecalScoreList = [
+            {text: "Patient controls stool completely", value: 1},
+            {text: "Patient cannot control flatus", value: 2},
+            {text: "Patient cannot control flatus, liquid stool", value: 3},
+            {text: "Patient cannot control flatus, liquid stool, or solid stool", value: 4},
+            {text: "Unkown", value: 0}
+        ]
     });
