@@ -291,4 +291,18 @@ angular.module('dricase', ['ionic'])
             {text: "Unknown", value: 0}
 
         ];
+    }).controller('ExamCtrl', function($scope){
+        $scope.meatusShapeList = [
+            {text: "Normal", value: 1},
+            {text: "Narrowed", value: 2},
+            {text: "Gaping", value: 3},
+            {text: "Unknown", value: 0}
+        ];
+
+        $scope.meatusPositionList = [
+            {text: "Normal", value: 1},
+            {text: "Anteriorly displaced", value: 2},
+            {text: "Posteriorly displaced", value: 3},
+            {text: "Unknown", value: 0}
+        ];
     });
