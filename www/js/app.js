@@ -270,4 +270,25 @@ angular.module('dricase', ['ionic'])
             {text: "Patient cannot control flatus, liquid stool, or solid stool", value: 4},
             {text: "Unkown", value: 0}
         ]
+    }).controller('ClinicalCtrl', function($scope){
+        $scope.yesNoList = [
+            {text: "Yes", value: 1},
+            {text: "No", value: 0},
+            {text: "Unknown", value: 2}
+        ];
+
+        $scope.dyeTestList = [
+            {text: "Positive", value: 1},
+            {text: "Negative", value: 2},
+            {text: "Not Done", value: 3},
+            {text: "Unknown", value: 0}
+        ];
+
+        $scope.dermatitisList = [
+            {text: "None", value: 1},
+            {text: "Moderate", value: 2},
+            {text: "Severe", value: 3},
+            {text: "Unknown", value: 0}
+
+        ];
     });
