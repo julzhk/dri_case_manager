@@ -2,7 +2,42 @@
 //    var db = new PouchDB('http://localhost:5984/my_database');
 var db = new PouchDB('local_patients');
 var remoteDB = new PouchDB('http://localhost:5984/patients');
-var syncDom = document.getElementById('sync-wrapper');
+
+PouchDB.replicate(db, remoteDB, {live: true,retry: true}).on(
+    'change', function (info) {
+    // handle change
+        writtencount = info.docs_written;
+        writefailcount = info.doc_write_failures;
+        if (writtencount >0){
+            $('.dbflashmessage').append('Database synced '+
+            writtencount +' records<br>').fadeIn(13000).fadeOut(13000);;
+        }
+        if (writefailcount >0){
+            $('.dberrormessage').append('Database sync error '+
+            writefailcount + ' records had problems').fadeIn(3000);
+        }
+
+        console.log('change');
+}).on('paused', function () {
+    // replication paused (e.g. user went offline)
+        $('.dbmessage').append('Database sync paused').fadeIn(3000);
+        console.log('paused');
+}).on('active', function () {
+        console.log('active');
+        $('.dbmessage').append('Database online').fadeIn(3000);
+  // replicate resumed (e.g. user went back online)
+}).on('denied', function (info) {
+        console.log('denied');
+  // a document failed to replicate, e.g. due to permissions
+}).on('complete', function (info) {
+        console.log('info');
+  // handle complete
+}).on('error', function (err) {
+        console.log('error');
+        console.log(err);
+        $('.dberrormessage').append('Database offline').fadeIn();
+  // handle error
+});
 
 function write_nav_to_ui(limit,skip, page, count){
     // used only on index.html
@@ -79,8 +114,9 @@ function sync() {
     var opts = {live: true};
     //db.replicate.to(db, opts, syncError);
     //db.replicate.from(db, opts, syncError);
+
     //db.sync(remoteDB, opts);
-    PouchDB.sync('local_patients', 'http://localhost:5984/patients');
+    //PouchDB.sync('local_patients', 'http://localhost:5984/patients');
 }
 
 function add_new_master_record(event){
@@ -89,15 +125,7 @@ function add_new_master_record(event){
     var id = 'master:'+new Date().toISOString();
     var new_record = {
         _id: id,
-        formName: 'master',
-        title: _.sample(
-                [ '1 let it be',
-                    '2 sgt peppers',
-                    '3 white album',
-                    '4 abbey rd',
-                    '5 magical mystery tour',
-                    '6 best of the beatles']),
-        completed: false
+        formName: 'master'
     };
     db.put(new_record, function callback(err, result) {
         if (!err) {

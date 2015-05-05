@@ -1,0 +1,25 @@
+
+#pouchdb-display {
+  margin-top: 20px;
+  text-align: left;
+  text-transform: none;
+}
+
+.dberrormessage {
+    color: red;
+    background-color: #a9a9a9;
+}
+
+.dbmessage {
+    color: blue;
+    background-color: greenyellow;
+
+}
+
+.dbflashmessage {
+}
+
+.dberrormessage, .dbflashmessage, .dbmessage {
+    padding-left: 3em;
+    font-weight: bold;
+}
