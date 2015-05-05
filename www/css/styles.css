@@ -23,3 +23,9 @@
     padding-left: 3em;
     font-weight: bold;
 }
+
+textarea {
+    width: 100% !important;
+    background-color: #fefefa;
+    height: 7em;
+}
