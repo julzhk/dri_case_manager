@@ -1,6 +1,7 @@
 //    sync to : https://cloudant.com/ ?
 //    var db = new PouchDB('http://localhost:5984/my_database');
-var db = new PouchDB('http://localhost:5984/my_database');
+var db = new PouchDB('local_patients');
+var remoteDB = new PouchDB('http://localhost:5984/patients');
 var syncDom = document.getElementById('sync-wrapper');
 
 function write_nav_to_ui(limit,skip, page, count){
@@ -74,18 +75,21 @@ function syncError() {
 }
 
 function sync() {
-    // todo: write: syncing to DOM
+    // todo: write: 'syncing' to DOM
     var opts = {live: true};
-    db.replicate.to(db, opts, syncError);
-    db.replicate.from(db, opts, syncError);
+    //db.replicate.to(db, opts, syncError);
+    //db.replicate.from(db, opts, syncError);
+    //db.sync(remoteDB, opts);
+    PouchDB.sync('local_patients', 'http://localhost:5984/patients');
 }
 
-function add_new_record(event){
+function add_new_master_record(event){
     //   FYI  throws an 'expected' error about 404..
     // normal..just detecting blob URL support.
-    var id = new Date().toISOString();
+    var id = 'master:'+new Date().toISOString();
     var new_record = {
         _id: id,
+        formName: 'master',
         title: _.sample(
                 [ '1 let it be',
                     '2 sgt peppers',

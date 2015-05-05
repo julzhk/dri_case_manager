@@ -23,7 +23,7 @@
 //        var remoteCouch = 'http://user:pass@dritest.iriscouch.com/todos';
         //    var db = new PouchDB('http://localhost:5984/my_database');
         $( document ).ready(function(event) {
-            $('.add').bind("click", event, add_new_record);
+            $('.add').bind("click", event, add_new_master_record);
             sync();
             console.log('started jq');
             console.log(Cookies.get('id'));
