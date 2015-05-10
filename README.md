@@ -14,4 +14,10 @@ see: http://pouchdb.com/errors.html
 $ npm install -g add-cors-to-couchdb
 $ add-cors-to-couchdb
 
+add camera: http://docs.phonegap.com/en/edge/cordova_camera_camera.md.html
+
+$ cordova plugin add org.apache.cordova.camera
+    $ cordova plugin ls
+    [ 'org.apache.cordova.camera' ]
+    
 

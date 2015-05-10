@@ -7,6 +7,20 @@
     <author email="dri.20.learningfuture@spamgourmet.com" href="#">
         Julian
     </author>
+    <feature name="Camera">
+        <param name="ios-package" value="CDVCamera" />
+    </feature>
+    <feature name="SplashScreen">
+        <param name="ios-package" value="CDVSplashScreen" />
+    </feature>
+
+    <platform name="ios">
+              <!-- iPad -->
+          <icon src="www/img/health_icon_144.png" width="144" height="144" />
+        <splash src="www/img/splash_ipad.png" width="1024" height="768"/>
+
+     </platform>
+    <preference name="BackgroundColor" value="0xff0000ff"/>
     <content src="index.html" />
     <access origin="*" />
 </widget>

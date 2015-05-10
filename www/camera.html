@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script src="js/pouchdb-3.3.0.min.js"></script>
+        <script src="js/jquery.js"></script>
+        <script src="js/js.cookie.js"></script>
+        <script src="js/underscore-min.js"></script>
+        <script src="js/app.js"></script>
+        <link href="css/font-awesome4.3.0.min.css" rel="stylesheet" type="text/css">
+        <link href="css/default.bootstrap.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" href="css/styles.css" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <script type="application/javascript">
+            $(document).ready(function(event) {
+                $('a').bind("click", event, save_on_page_change);
+                var id = Cookies.get('id');
+                $('#patientNumber').val(id);
+//                use _attachments field see https://cloudant.com/for-developers/crud/#pageArea
+            });
+        </script>
+    <title>Capture Photo</title>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        var pictureSource;   // picture source
+        var destinationType; // sets the format of returned value
+        // Wait for device API libraries to load
+        document.addEventListener("deviceready",onDeviceReady,false);
+        // device APIs are available
+        //
+        function onDeviceReady() {
+            pictureSource=navigator.camera.PictureSourceType;
+            destinationType=navigator.camera.DestinationType;
+        }
+        // Called when a photo is successfully retrieved
+        function onPhotoDataSuccess(imageData) {
+          // Uncomment to view the base64-encoded image data
+          // console.log(imageData);
+          // Get image handle
+          //
+          var smallImage = document.getElementById('smallImage');
+          // Unhide image elements
+          smallImage.style.display = 'block';
+          // Show the captured photo
+          // The in-line CSS rules are used to resize the image
+          smallImage.src = "data:image/jpeg;base64," + imageData;
+        }
+        // Called when a photo is successfully retrieved
+        function onPhotoURISuccess(imageURI) {
+          // Uncomment to view the image file URI
+          // console.log(imageURI);
+          // Get image handle
+          var largeImage = document.getElementById('largeImage');
+          // Unhide image elements
+          largeImage.style.display = 'block';
+          // Show the captured photo
+          // The in-line CSS rules are used to resize the image
+          //
+          largeImage.src = imageURI;
+        }
+        // A button will call this function
+        function capturePhoto() {
+          // Take picture using device camera and retrieve image as base64-encoded string
+          navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
+            destinationType: destinationType.DATA_URL });
+        }
+    //    OPTIONS FIELDS
+    //{ quality : 75,
+    //  destinationType : Camera.DestinationType.DATA_URL,
+    //  sourceType : Camera.PictureSourceType.CAMERA,
+    //  allowEdit : true,
+    //  encodingType: Camera.EncodingType.JPEG,
+    //  targetWidth: 100,
+    //  targetHeight: 100,
+    //  popoverOptions: CameraPopoverOptions,
+    //  saveToPhotoAlbum: false };
+
+        // A button will call this function
+        //
+        function capturePhotoEdit() {
+          // Take picture using device camera, allow edit, and retrieve image as base64-encoded string
+          navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true,
+            destinationType: destinationType.DATA_URL });
+        }
+        // A button will call this function
+        function getPhoto(source) {
+          // Retrieve image file location from specified source
+          navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
+            destinationType: destinationType.FILE_URI,
+            sourceType: source });
+        }
+        // Called if something bad happens.
+        function onFail(message) {
+          alert('Failed because: ' + message);
+        }
+
+    </script>
+  </head>
+  <body><br style="padding-top: 2em;">
+    <!--<button onclick="capturePhoto();">Capture Photo</button> <br>-->
+    <button onclick="capturePhotoEdit();">Capture Editable Photo</button> <br>
+    <!--<button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>-->
+    <!--<button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>-->
+    <a href="admin.html"  >back</a>
+    <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
+    <!--<img style="display:none;" id="largeImage" src="" />-->
+  </body>
+    <form role="form">
+        <div class="form-group">
+            <input class="form-control hidden" name="formName"  id="formName" type="text" value="camera" readonly>
+            <label class="control-label" for="patientNumber" name="patient_number">Patient Number</label>
+            <input class="form-control" id="patientNumber" placeholder="Auto generated" type="text" readonly>
+        </div>
+    </form>
+</html>
