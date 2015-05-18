@@ -55,7 +55,7 @@
                                 <fieldset>
                                     <div class="form-group">
                                         <label class="control-label" for="date-of-exam">Date of examination (dd/mm/yyyy)?</label>
-                                        <input class="form-control" id="date-of-exam" placeholder="date of exam (dd/mm/yyyy)" type="date">
+                                        <input class="form-control" id="date-of-exam" name="date_of_exam" placeholder="date of exam (dd/mm/yyyy)" type="date">
                                     </div>
                                 </fieldset>
 
@@ -63,30 +63,30 @@
                                 <fieldset>
                                     <div class="form-group">
                                         <label class="control-label" for="surgeon-name">Surgeon</label>
-                                        <input class="form-control" id="surgeon-name" placeholder="Surgeon's name" type="text">
+                                        <input class="form-control" id="surgeon-name" name="surgeon_name" placeholder="Surgeon's name" type="text">
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label" for="assistant-name">Assistant</label>
-                                        <input class="form-control" id="assistant-name" placeholder="Assistant's name" type="text">
+                                        <input class="form-control" id="assistant-name" name="assistant_name" placeholder="Assistant's name" type="text">
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label" for="scrub-nurse-name">Scrub-nurse</label>
-                                        <input class="form-control" id="scrub-nurse-name" placeholder="Scrub-nurse's name" type="text">
+                                        <input class="form-control" id="scrub-nurse-name" name="scrub_nurse_name" placeholder="Scrub-nurse's name" type="text">
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label" for="theatre-nurse-name">Theatre Nurse</label>
-                                        <input class="form-control" id="theatre-nurse-name" placeholder="Theatre-nurse's name" type="text">
+                                        <input class="form-control" id="theatre-nurse-name" name="theatre_nurse_name" placeholder="Theatre-nurse's name" type="text">
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label" for="anesthetist-name">Anesthetist</label>
-                                        <input class="form-control" id="anesthetist-name" placeholder="anesthetist's name" type="text">
+                                        <input class="form-control" id="anesthetist-name" menu-close="anesthetist_name" placeholder="anesthetist's name" type="text">
                                     </div>
                                 </fieldset>
                             <legend>Anesthesia</legend>
                                  <fieldset>
                                      <div class="form-group">
                                         <label class="control-label" for="spinal-anesthesia-level">Spinal Anesthesia Level</label>
-                                        <input class="form-control" id="spinal-anesthesia-level" placeholder="Spinal Anesthesia Level" type="text">
+                                        <input class="form-control" id="spinal-anesthesia-level" name="spinal_anesthesia_level" placeholder="Spinal Anesthesia Level" type="text">
                                     </div>
 
                                  </fieldset>
@@ -94,19 +94,19 @@
                                     <div class="control-group">
                                         <label class="control-label" for="medication">Medication used and dosage</label>
                                         <div class="controls">
-                                            <textarea id="medication" class="medication" name="textarea">Medication?</textarea>
+                                            <textarea id="medication" class="medication" name="medication" placeholder="Medication?"></textarea>
                                         </div>
                                     </div>
                                      <div class="form-group">
                                         <label class="control-label" for="needle-size">Size of needle used (G)</label>
-                                        <input class="form-control" id="needle-size" placeholder="Needle Size (G)" type="number">
+                                        <input class="form-control" id="needle-size" name="needle_size" placeholder="Needle Size (G)" type="number">
                                     </div>
                                  <legend>
                                      Anatomy
                                  </legend>
                                     <div class="form-group">
                                         <label class="control-label" for="pubic-arch-angle">Size of the Pubic Arch (in degrees)</label>
-                                        <input class="form-control" id="pubic-arch-angle" placeholder="Size of the Pubic Arch (in degrees)" type="number">
+                                        <input class="form-control" id="pubic-arch-angle" name="pubic_arch_angle" placeholder="Size of the Pubic Arch (in degrees)" type="number">
                                     </div>
 
                                  <!-- Multiple Radios -->
@@ -140,12 +140,12 @@
                                         </div>
                                           <div class="form-group">
                                             <label class="control-label" for="vagina-anterior-length">Length of anterior vaginal wall (cm)</label>
-                                            <input class="form-control" id="vagina-anterior-length" placeholder="Length of anterior vaginal wall (cm)" type="number">
+                                            <input class="form-control" id="vagina-anterior-length" name="vagina_anterior_length" placeholder="Length of anterior vaginal wall (cm)" type="number">
                                           </div>
 
                                           <div class="form-group">
                                             <label class="control-label" for="vagina-posterior-length">Length of posterior vaginal wall (cm)</label>
-                                            <input class="form-control" id="vagina-posterior-length" placeholder="Length of posterior vaginal wall (cm)" type="number">
+                                            <input class="form-control" id="vagina-posterior-length" name="vagina_posterior_length" placeholder="Length of posterior vaginal wall (cm)" type="number">
                                           </div>
 
                             </div>

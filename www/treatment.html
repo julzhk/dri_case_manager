@@ -46,12 +46,54 @@
 
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title">panel</h3>
+                        <h3 class="panel-title">Treatment</h3>
                     </div>
                     <div class="panel-body">
                         <form role="form">
+                            <input class="form-control hidden" name="formName"  id="formName" type="text" value="social" readonly>
+                            <input class="form-control hidden" id="patientNumber" type="text" readonly>
+                                <div class="form-group">
+                                <label class="control-label" for="fistulaTreated">Which fistula are you going to treat?</label>
+                                <input class="form-control" id="fistulaTreated" name="fistulaTreated" placeholder="Name the fistula" type="text">
+                            </div>
                             <div class="form-group">
-                                1
+                                <label class="control-label">Episiotomy?</label>
+                                <div class="controls">
+                                    <label class="radio" for="Episiotomy-status-0">
+                                        <input type="radio" name="episiotemy" id="Episiotomy-status-0" value="None" checked="checked">
+                                        None
+                                    </label>
+                                    <label class="radio" for="Episiotomy-status-1">
+                                        <input type="radio" name="episiotemy" id="Episiotomy-status-1" value="Left-sided">
+                                        Left-sided
+                                    </label>
+                                    <label class="radio" for="Episiotomy-status-2">
+                                        <input type="radio" name="episiotemy" id="Episiotomy-status-2" value="Right-sided">
+                                        Right-sided
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label">Uretric catheter?</label>
+                                <div class="controls">
+                                    <label class="radio" for="Uretric-status-0">
+                                        <input type="radio" name="uretricCatheter" id="Uretric-status-0" value="None" checked="checked">
+                                        None
+                                    </label>
+                                    <label class="radio" for="Uretric-status-1">
+                                        <input type="radio" name="uretricCatheter" id="Uretric-status-1" value="Left">
+                                        Left
+                                    </label>
+                                    <label class="radio" for="Uretric-status-2">
+                                        <input type="radio" name="uretricCatheter" id="Uretric-status-2" value="Right">
+                                        Right
+                                    </label>
+                                    <label class="radio" for="Uretric-status-3">
+                                        <input type="radio" name="uretricCatheter" id="Uretric-status-3" value="Both">
+                                        Both
+                                    </label>
+                                </div>
                             </div>
                         </form>
                     </div>

@@ -61,32 +61,32 @@
                                 <div class="control-group">
                                       <label class="control-label" for="checkboxes">Are you suffering from any of the following medical conditions?</label>
                                           <div class="controls">
-                                            <label class="checkbox" for="checkboxes-0">
-                                              <input type="checkbox" name="checkboxes" id="checkboxes-0" value="Tuberculosis">
+                                            <label class="checkbox" for="medical-condition-0">
+                                              <input type="checkbox" name="medical_conditions" id="medical-condition-0" value="Tuberculosis">
                                               Tuberculosis
                                             </label>
-                                            <label class="checkbox" for="checkboxes-1">
-                                              <input type="checkbox" name="checkboxes" id="checkboxes-1" value="HIV/AIDS">
+                                            <label class="checkbox" for="medical-condition-1">
+                                              <input type="checkbox" name="medical_conditions" id="medical-condition-1" value="HIV/AIDS">
                                               HIV/AIDS
                                             </label>
-                                            <label class="checkbox" for="checkboxes-2">
-                                              <input type="checkbox" name="checkboxes" id="checkboxes-2" value="High Blood Pressure">
+                                            <label class="checkbox" for="medical-condition-2">
+                                              <input type="checkbox" name="medical_conditions" id="medical-condition-2" value="High Blood Pressure">
                                               High Blood Pressure
                                             </label>
-                                            <label class="checkbox" for="checkboxes-3">
-                                              <input type="checkbox" name="checkboxes" id="checkboxes-3" value="Diabetes">
+                                            <label class="checkbox" for="medical-condition-3">
+                                              <input type="checkbox" name="medical_conditions" id="medical-condition-3" value="Diabetes">
                                               Diabetes
                                             </label>
-                                            <label class="checkbox" for="checkboxes-4">
-                                              <input type="checkbox" name="checkboxes" id="checkboxes-4" value="Epilepsy">
+                                            <label class="checkbox" for="medical-condition-4">
+                                              <input type="checkbox" name="medical_conditions" id="medical-condition-4" value="Epilepsy">
                                               Epilepsy
                                             </label>
-                                            <label class="checkbox" for="checkboxes-5">
-                                              <input type="checkbox" name="checkboxes" id="checkboxes-5" value="Hepatitis">
+                                            <label class="checkbox" for="medical-condition-5">
+                                              <input type="checkbox" name="medical_conditions" id="medical-condition-5" value="Hepatitis">
                                               Hepatitis
                                             </label>
-                                            <label class="checkbox" for="checkboxes-6">
-                                              <input type="checkbox" name="checkboxes" id="checkboxes-6" value="Other">
+                                            <label class="checkbox" for="medical-condition-6">
+                                              <input type="checkbox" name="medical_conditions" id="medical-condition-6" value="Other">
                                               Other
                                             </label>
                                           </div>
@@ -94,7 +94,7 @@
                                     <div class="control-group">
                                         <label class="control-label" for="other-conditions">Please list any other conditions</label>
                                         <div class="controls">
-                                            <textarea id="other-conditions" class="other-conditions" name="textarea">Any other conditions?</textarea>
+                                            <textarea id="other-conditions" class="other-conditions" name="other_conditions" placeholder="Any other conditions?"></textarea>
                                         </div>
                                     </div>
 
@@ -102,7 +102,7 @@
                                     <div class="control-group">
                                         <label class="control-label" for="other-conditions">Please list any allergies</label>
                                         <div class="controls">
-                                            <textarea id="allergies" class="allergies" name="textarea">Any allergies?</textarea>
+                                            <textarea id="allergies" class="allergies" name="allergies">Any allergies?</textarea>
                                         </div>
                                     </div>
 
@@ -115,16 +115,16 @@
                                 <legend>Obs/ Gyn History</legend>
                                 <fieldset>
                                     <div class="form-group">
-                                        <label class="control-label" for="firstPeriod">How old were you when you had your first period?</label>
-                                        <input class="form-control" id="firstPeriod" placeholder="Your age in years?" type="text">
+                                        <label class="control-label" for="first-period">How old were you when you had your first period?</label>
+                                        <input class="form-control" id="first-period" name="first_period" placeholder="Your age in years?" type="text">
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label" for="periodsBeforeMarriage">How many periods did you have before you were first married?</label>
-                                        <input class="form-control" id="periodsBeforeMarriage" placeholder="Number of periods?" type="text">
+                                        <label class="control-label" for="periods-before-marriage">How many periods did you have before you were first married?</label>
+                                        <input class="form-control" id="periods-before-marriage" name="periods_before_marriage" placeholder="Number of periods?" type="text">
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label" for="periodsBeforePregnancy">How many periods did you have before your first pregnancy?</label>
-                                        <input class="form-control" id="periodsBeforePregnancy" placeholder="Number of periods?" type="text">
+                                        <label class="control-label" for="periods-before-pregnancy">How many periods did you have before your first pregnancy?</label>
+                                        <input class="form-control" id="periods-before-pregnancy" name="periods_before_pregnancy" placeholder="Number of periods?" type="text">
                                     </div>
 
                                     <!-- Multiple Radios -->
@@ -157,7 +157,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label" for="fistula-cause-other">Please specify other reasons?</label>
-                                            <input class="form-control" id="fistula-cause-other" placeholder="Other?" type="text">
+                                            <input class="form-control" id="fistula-cause-other" name="fistula_other_causes" placeholder="Other?" type="text">
                                         </div>
                                     </div>
 
@@ -167,13 +167,13 @@
 
                                       <div class="form-group">
                                         <label for="pregnancyYear">Year</label>
-                                        <input type="text" class="form-control" id="pregnancyYear" placeholder="Year of pregnancy">
+                                        <input type="text" class="form-control" id="pregnancy-year" name="pregnancy_year" placeholder="Year of pregnancy">
                                       </div>
 
                                 <div class="control-group">
                                     <label class="control-label" for="pregnancy-place-0">Place of delivery?</label>
                                     <div class="controls">
-                                        <label class="radio" for="pregnancy-place">
+                                        <label class="radio" for="pregnancy-place-0">
                                             <input type="radio" name="pregnancy-place" id="pregnancy-place-0" value="Unknown" checked="checked">Unknown</label>
                                         <label class="radio" for="pregnancy-place-1">
                                             <input type="radio" name="pregnancy-place" id="pregnancy-place-1" value="Home">Home</label>
@@ -217,7 +217,6 @@
                                             <input type="radio" name="delivery-outcome" id="delivery-outcome-2" value="Stillbirth">Stillbirth</label>
                                         <label class="radio" for="delivery-outcome-3">
                                             <input type="radio" name="delivery-outcome" id="delivery-outcome-3" value="Early Neonatal Death">Early Neonatal Death</label>
-                                        <label class="radio" for="delivery-outcome-4">
                                     </div>
                                 </div>
 
@@ -245,9 +244,6 @@
                                             <input type="radio" name="caused-fistula" id="caused-fistula-2" value="No">No</label>
                                     </div>
                                 </div>
-
-
-
                                 </div>
                         </form>
                     </div>
